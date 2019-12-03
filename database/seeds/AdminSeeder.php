@@ -17,8 +17,8 @@ class AdminSeeder extends Seeder
         $admin = User::firstOrCreate(array(
             'email' => 'admin@admin.com',
             'name' => 'Admin'
+            'password' => bcrypt("password123")
         ));
-        $admin->password = bcrypt("password123");
         $admin->save();
 
         if($admin->profile == null){
