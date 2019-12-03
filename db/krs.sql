@@ -16,6 +16,333 @@ CREATE DATABASE /*!32312 IF NOT EXISTS*/`krz_hris_v3` /*!40100 DEFAULT CHARACTER
 
 USE `krz_hris_v3`;
 
+/*Table structure for table `applicants` */
+
+DROP TABLE IF EXISTS `applicants`;
+
+CREATE TABLE `applicants` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(11) NOT NULL,
+  `jobhiring_id` int(11) NOT NULL,
+  `status` int(11) NOT NULL DEFAULT '0' COMMENT '0 = pending, 1 = approved, 2 = for interview , 3 = declined',
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=27 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+/*Data for the table `applicants` */
+
+insert  into `applicants`(`id`,`user_id`,`jobhiring_id`,`status`,`created_at`,`updated_at`,`deleted_at`) values (10,96,4,0,'2019-12-01 20:35:53','2019-12-01 20:35:53',NULL),(11,96,5,0,'2019-12-01 20:37:26','2019-12-01 20:37:26',NULL),(12,99,4,0,'2019-12-01 20:44:54','2019-12-01 20:44:54',NULL),(13,99,5,0,'2019-12-01 20:45:02','2019-12-01 20:45:02',NULL),(14,103,4,0,'2019-12-01 22:09:21','2019-12-01 22:09:21',NULL),(15,110,5,0,'2019-12-01 22:35:40','2019-12-01 22:35:40',NULL),(16,110,4,0,'2019-12-01 22:35:46','2019-12-01 22:35:46',NULL),(17,111,5,0,'2019-12-01 22:39:53','2019-12-01 22:39:53',NULL),(18,112,4,0,'2019-12-01 23:12:15','2019-12-01 23:12:15',NULL),(19,113,4,0,'2019-12-01 23:33:49','2019-12-01 23:33:49',NULL),(20,113,5,0,'2019-12-01 23:34:03','2019-12-01 23:34:03',NULL),(21,114,4,0,'2019-12-03 16:09:40','2019-12-03 16:09:40',NULL),(22,29,4,0,'2019-12-03 18:41:54','2019-12-03 18:41:54',NULL),(23,115,5,0,'2019-12-03 18:42:33','2019-12-03 18:42:33',NULL),(24,115,4,0,'2019-12-03 18:43:15','2019-12-03 18:43:15',NULL),(25,116,5,0,'2019-12-03 19:10:57','2019-12-03 19:10:57',NULL),(26,116,4,0,'2019-12-03 19:11:23','2019-12-03 19:11:23',NULL);
+
+/*Table structure for table `failed_jobs` */
+
+DROP TABLE IF EXISTS `failed_jobs`;
+
+CREATE TABLE `failed_jobs` (
+  `id` bigint(20) unsigned NOT NULL AUTO_INCREMENT,
+  `connection` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `queue` text COLLATE utf8mb4_unicode_ci NOT NULL,
+  `payload` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `exception` longtext COLLATE utf8mb4_unicode_ci NOT NULL,
+  `failed_at` timestamp NOT NULL DEFAULT CURRENT_TIMESTAMP,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+/*Data for the table `failed_jobs` */
+
+/*Table structure for table `jobhirings` */
+
+DROP TABLE IF EXISTS `jobhirings`;
+
+CREATE TABLE `jobhirings` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  `title` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `description` text COLLATE utf8mb4_unicode_ci,
+  `requirements` text COLLATE utf8mb4_unicode_ci,
+  `responsibilities` text COLLATE utf8mb4_unicode_ci,
+  `others` text COLLATE utf8mb4_unicode_ci,
+  `location` text COLLATE utf8mb4_unicode_ci,
+  `how_to_apply` text COLLATE utf8mb4_unicode_ci,
+  `slot` int(11) DEFAULT NULL,
+  `position` int(11) DEFAULT NULL,
+  `skill_requirement` text COLLATE utf8mb4_unicode_ci,
+  `available_from` date DEFAULT NULL,
+  `available_to` date DEFAULT NULL,
+  `email_address` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `is_active` tinyint(1) DEFAULT NULL,
+  `user_id` int(11) DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+/*Data for the table `jobhirings` */
+
+insert  into `jobhirings`(`id`,`created_at`,`updated_at`,`deleted_at`,`title`,`description`,`requirements`,`responsibilities`,`others`,`location`,`how_to_apply`,`slot`,`position`,`skill_requirement`,`available_from`,`available_to`,`email_address`,`is_active`,`user_id`) values (1,'2019-11-03 02:23:02','2019-11-03 03:36:30','2019-11-03 03:36:30','Voluptate ducimus d','Optio at possimus','Esse adipisci ad vi','Fugiat id dignissi','Voluptatem Harum pr','Officia aliqua Ea n','Ex ipsam possimus c',66,85,'Consequatur quae vol','1996-02-10','1972-11-14','veqiz@mailinator.com',NULL,4),(2,'2019-11-03 02:23:56','2019-11-03 03:36:34','2019-11-03 03:36:34','Delectus provident','Voluptatibus dolore','Non tempore non ven','Autem sint fugit al','Sint vero ipsa mol','Voluptates repellend','Eos velit quam aut n',70,87,'Eum dolorem facilis','1985-12-09','2006-11-04','guniviti@mailinator.net',NULL,4),(3,'2019-11-03 03:36:13','2019-11-03 03:36:27','2019-11-03 03:36:27',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,4),(4,'2019-11-03 03:36:44','2019-11-03 03:36:44',NULL,'Blanditiis ipsum in','Optio beatae sunt','Aperiam illum omnis','Odio ipsa enim cons','Aut quas duis delect','Facere ex aperiam in','Ex sit reiciendis as',42,83,'Suscipit maxime in i','2009-05-25','2018-07-10','fomyp@mailinator.net',NULL,4),(5,'2019-11-03 03:36:56','2019-11-03 03:36:56',NULL,'Corrupti quibusdam','Voluptate numquam do','Dignissimos culpa i','Enim rem sit cumque','Ut ad consequatur r','Id fugiat molestiae','Quia accusamus exped',44,38,'Ut rerum molestias a','2003-04-16','1985-11-12','jatozomyb@mailinator.com',NULL,4);
+
+/*Table structure for table `karlcruds` */
+
+DROP TABLE IF EXISTS `karlcruds`;
+
+CREATE TABLE `karlcruds` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `Name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `Address` text COLLATE utf8mb4_unicode_ci,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+/*Data for the table `karlcruds` */
+
+insert  into `karlcruds`(`id`,`created_at`,`updated_at`,`Name`,`Address`) values (1,'2019-11-03 00:35:54','2019-11-03 00:35:54','asdasd','asdasd');
+
+/*Table structure for table `migrations` */
+
+DROP TABLE IF EXISTS `migrations`;
+
+CREATE TABLE `migrations` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `migration` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `batch` int(11) NOT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=20 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+/*Data for the table `migrations` */
+
+insert  into `migrations`(`id`,`migration`,`batch`) values (5,'2014_10_12_000000_create_users_table',1),(6,'2014_10_12_100000_create_password_resets_table',1),(7,'2016_01_01_193651_create_roles_permissions_tables',1),(8,'2019_08_19_000000_create_failed_jobs_table',1),(9,'2019_11_02_131429_create_profiles_table',2),(10,'2019_11_02_173231_create_posts_table',2),(11,'2019_11_02_173337_create_tests_table',2),(12,'2019_11_02_175502_create_sample_cruds_table',2),(13,'2019_11_02_185740_create_test_agains_table',3),(14,'2019_11_02_191401_create_newagains_table',4),(15,'2019_11_02_191554_create_newagaintest_c_ns_table',5),(16,'2019_11_03_003507_create_karlcruds_table',6),(17,'2019_11_03_021336_create_lasttests_table',7),(18,'2019_11_03_022233_create_jobhirings_table',8),(19,'2019_12_01_182043_create_applicants_table',9);
+
+/*Table structure for table `newagains` */
+
+DROP TABLE IF EXISTS `newagains`;
+
+CREATE TABLE `newagains` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `desc` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+/*Data for the table `newagains` */
+
+/*Table structure for table `newagaintest_c_ns` */
+
+DROP TABLE IF EXISTS `newagaintest_c_ns`;
+
+CREATE TABLE `newagaintest_c_ns` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `name` text COLLATE utf8mb4_unicode_ci,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+/*Data for the table `newagaintest_c_ns` */
+
+/*Table structure for table `password_resets` */
+
+DROP TABLE IF EXISTS `password_resets`;
+
+CREATE TABLE `password_resets` (
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `token` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  KEY `password_resets_email_index` (`email`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+/*Data for the table `password_resets` */
+
+/*Table structure for table `permission_role` */
+
+DROP TABLE IF EXISTS `permission_role`;
+
+CREATE TABLE `permission_role` (
+  `permission_id` int(10) unsigned NOT NULL,
+  `role_id` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`permission_id`,`role_id`),
+  KEY `permission_role_role_id_foreign` (`role_id`),
+  CONSTRAINT `permission_role_permission_id_foreign` FOREIGN KEY (`permission_id`) REFERENCES `permissions` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `permission_role_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+/*Data for the table `permission_role` */
+
+insert  into `permission_role`(`permission_id`,`role_id`) values (1,3),(2,3),(2,4),(3,5);
+
+/*Table structure for table `permissions` */
+
+DROP TABLE IF EXISTS `permissions`;
+
+CREATE TABLE `permissions` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `label` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+/*Data for the table `permissions` */
+
+insert  into `permissions`(`id`,`name`,`label`,`created_at`,`updated_at`) values (1,'All Permission','All Permission','2019-11-02 19:26:18','2019-11-02 19:26:18'),(2,'User Permissions Only','User Permissions Only','2019-11-02 19:27:39','2019-11-02 19:27:39'),(3,'jobseekers permission','jobseekers permission','2019-11-25 18:13:39','2019-11-25 18:13:39');
+
+/*Table structure for table `posts` */
+
+DROP TABLE IF EXISTS `posts`;
+
+CREATE TABLE `posts` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  `post` text COLLATE utf8mb4_unicode_ci,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+/*Data for the table `posts` */
+
+/*Table structure for table `profiles` */
+
+DROP TABLE IF EXISTS `profiles`;
+
+CREATE TABLE `profiles` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `user_id` int(10) unsigned DEFAULT NULL,
+  `is_employed` tinyint(1) DEFAULT '0',
+  `is_department_head` tinyint(1) DEFAULT '0',
+  `device_id` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `employee_id_no` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `surname` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `firstname` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `middlename` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `suffix` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `department` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `section` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `position` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `salary_schedule` date DEFAULT NULL,
+  `sg` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `monthly_salary` int(11) DEFAULT NULL,
+  `step` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `date_of_birth` date DEFAULT NULL,
+  `place_of_birth` text COLLATE utf8mb4_unicode_ci,
+  `sex` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `civil_Status` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `height` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `weight` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `gsis_id_no` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `pagibig_id_no` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `phil_health_no` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `sss_no` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `tin_no` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `bio` text COLLATE utf8mb4_unicode_ci,
+  `agency_emp_no` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `citizenship` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `citizenship_by` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `country` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `house_block_lot` text COLLATE utf8mb4_unicode_ci,
+  `street` text COLLATE utf8mb4_unicode_ci,
+  `subdivision_or_village` text COLLATE utf8mb4_unicode_ci,
+  `barangay` text COLLATE utf8mb4_unicode_ci,
+  `city_or_municipality` text COLLATE utf8mb4_unicode_ci,
+  `province` text COLLATE utf8mb4_unicode_ci,
+  `zipcode` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `tel_no` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `mobile_no` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `email` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `highest_educational_attainment` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `first_day_of_service_in_govt` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `casual_appointment` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `original_appointment` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `nature_of_appointment` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `status_type` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `spouse_surname` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `spouse_firstname` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `spouse_middlename` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `spouse_occupation` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `spouse_employer_bus_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `spouse_business_address` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `spouse_bus_telephone` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `father_surname` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `father_firstname` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `father_middlename` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `mother_surname` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `mother_firstname` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `mother_middlename` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `children` text COLLATE utf8mb4_unicode_ci,
+  `educational` text COLLATE utf8mb4_unicode_ci,
+  `cse` text COLLATE utf8mb4_unicode_ci,
+  `we` text COLLATE utf8mb4_unicode_ci,
+  `vw` text COLLATE utf8mb4_unicode_ci,
+  `tp` text COLLATE utf8mb4_unicode_ci,
+  `oi` text COLLATE utf8mb4_unicode_ci,
+  `reference` text COLLATE utf8mb4_unicode_ci,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`),
+  KEY `profiles_user_id_foreign` (`user_id`),
+  CONSTRAINT `profiles_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB AUTO_INCREMENT=39 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+/*Data for the table `profiles` */
+
+insert  into `profiles`(`id`,`user_id`,`is_employed`,`is_department_head`,`device_id`,`employee_id_no`,`surname`,`firstname`,`middlename`,`suffix`,`department`,`section`,`position`,`status`,`salary_schedule`,`sg`,`monthly_salary`,`step`,`date_of_birth`,`place_of_birth`,`sex`,`civil_Status`,`height`,`weight`,`gsis_id_no`,`pagibig_id_no`,`phil_health_no`,`sss_no`,`tin_no`,`bio`,`agency_emp_no`,`citizenship`,`citizenship_by`,`country`,`house_block_lot`,`street`,`subdivision_or_village`,`barangay`,`city_or_municipality`,`province`,`zipcode`,`tel_no`,`mobile_no`,`email`,`highest_educational_attainment`,`first_day_of_service_in_govt`,`casual_appointment`,`original_appointment`,`nature_of_appointment`,`status_type`,`spouse_surname`,`spouse_firstname`,`spouse_middlename`,`spouse_occupation`,`spouse_employer_bus_name`,`spouse_business_address`,`spouse_bus_telephone`,`father_surname`,`father_firstname`,`father_middlename`,`mother_surname`,`mother_firstname`,`mother_middlename`,`children`,`educational`,`cse`,`we`,`vw`,`tp`,`oi`,`reference`,`created_at`,`updated_at`,`deleted_at`) values (1,41,0,0,'In porro enim et min','Commodi duis irure c','Soto','Glenna','Audra Robbins','Voluptatem laboris ','option 2','option 2','option 2','option 3','1979-09-13','option 2',11,'option 2','1991-08-10','Sapiente ea consequu','Female','Devorced','In reprehenderit aut','Qui atque id dolor s','Est facere non nostr','Cumque reprehenderit','Consequat Molestiae','Cillum consequat Il','Nulla in voluptatem ',NULL,'Velit qui exercitati','option1','option1','Country 1','Ipsam assumenda ipsu','Mollitia suscipit ne','Nam consequat Adipi','Sunt et architecto f','Et excepteur dicta t','Dolorem laborum Nos','67396','Exercitation sed sit','Qui error cumque nul',NULL,'Voluptas dolores ex ','2','Do excepturi amet s','Praesentium dolorum ','Necessitatibus non n','[\"\",\"\"]','Mack',NULL,'Melyssa Mcknight','Odit provident vel ','Chastity Ferguson','Deleniti mollitia fu','+1 (723) 934-7432','Lewis','Tiger','Melodie Dunn','Ferguson','Cyrus','Kyle Merritt','[]','[]','[]','[]','[]','[]','[]','[]','2019-11-25 17:54:53','2019-11-25 17:54:53',NULL),(2,42,1,0,'Maxime laborum et do','Vel voluptatem volup','Jackson','Jacob','Kyra Mckinney','Aliqua Aliquam quia','option 4','option 2','option 3','option 4','1975-07-01','option 3',8,'option 4','1987-11-16','Consectetur accusam','Female','Devorced','Delectus libero id ','Recusandae Voluptat','Fugiat ut laudantium','Commodo officia dolo','Est reiciendis natu','Non aut praesentium ','Commodo illum nihil',NULL,'Consequat Cillum qu','option1','option2','Country 1','Soluta incididunt qu','Aliqua Rem incididu','At doloremque vel ut','Est laborum Delect','Quam id eiusmod in ','Cupidatat nemo aliqu','20344','Maxime enim laborios','Cupidatat doloribus ',NULL,'Sed asperiores dolor','14','Maiores quos dolores','Ea consectetur dolo','Sint id consectetur','[\"\"]','Huff',NULL,'Addison Dickson','Eveniet voluptate s','Sydney Langley','Harum consectetur d','+1 (777) 592-9425','Roman','Drake','Finn Dickerson','Charles','Myra','Kalia Vaughn','[]','[]','[]','[]','[]','[]','[]','[]','2019-11-25 17:55:42','2019-11-25 17:55:42',NULL),(3,44,1,0,'Nulla qui dicta cons','Et aperiam ut volupt','Gamble','Timon','Cruz Sharpe','Debitis incidunt ve','option 2','option 4','option 3','option 3','1987-07-23','option 3',3,'option 3','1995-08-14','Qui quia dolorem err','Female','Devorced','Fugiat voluptatem c','Quam saepe officia a','Dolore fuga Officii','Natus minima minus e','Sapiente sed in duci','Culpa esse cumque e','Ab Nam tempore reru',NULL,'Quas consequuntur co','option2','option1','Country 1','A voluptatem Placea','Mollitia vel reprehe','Ut fuga Dolorum sit','Tenetur ut illo dolo','Commodo magna ut sit','Ipsam deserunt dolor','71612','Non est proident e','Et placeat pariatur',NULL,'Minima veniam non e','19','Ex beatae quia conse','Qui magnam quia quo ','Recusandae Est volu','[\"\",\"\",\"\"]','Floyd',NULL,'Brock Robertson','Labore et aperiam vi','Ralph Larson','Maxime enim ut tempo','+1 (614) 248-2368','Estrada','Dylan','Gemma Schneider','Mckenzie','Nathan','Libby Frederick','[]','[]','[]','[]','[]','[]','[]','[]','2019-11-25 18:02:10','2019-11-25 18:02:10',NULL),(4,47,0,1,'Voluptas aut rerum a','Sed laudantium aut ','Villarreal','Louis','Kitra Elliott','Distinctio Quis ut ','option 3','option 2','option 3','option 4','1971-03-15','option 4',3,'option 2','2002-06-08','Placeat voluptatem','Female','Maried','Et in dolor est porr','Ea in libero optio ','Ipsum facilis doloru','Atque qui possimus ','Est ut consequatur p','Eos quidem labore no','Ullam ea nostrum cil',NULL,'Aut corrupti sed ex','option1','option1','Country 1','Qui et fugit dolore','Deserunt voluptate e','Dolore autem iure nu','Qui aliquid deserunt','Sunt consectetur se','Vero nulla culpa omn','56949','Quia vel assumenda m','Voluptates tenetur c',NULL,'Est fugiat velit fu','5','Exercitationem volup','Magni minim amet es','In quibusdam minim e','[\"\",\"\",\"\"]','Pena',NULL,'Karyn Joyner','Quibusdam magna temp','Candice Welch','Similique proident ','+1 (809) 924-7506','Bullock','Oleg','Medge Guy','Stone','Teagan','Alea Peters','[]','[]','[]','[]','[]','[]','[]','[]','2019-11-25 18:06:27','2019-11-25 18:06:27',NULL),(5,48,1,0,'Ut numquam odio occa','Quo esse et velit e','Dillard','Iola','Hedda Fitzgerald','Impedit qui numquam','option 4','option 3','option 2','option 3','1981-10-26','option 3',6,'option 3','1981-04-23','Aliquam explicabo U','Female','Devorced','Architecto velit el','Veniam quo commodi ','Duis dignissimos ull','Non vel ex ad nihil ','Duis velit accusanti','Reprehenderit et sin','Et aute et molestias',NULL,'Adipisci quo est rep','option2','option1','Country 1','Et quis laudantium ','Temporibus eius nihi','Eum ipsum minus qui ','Proident saepe ea i','Dolore sit repellen','Tempora vel esse co','61238','Est cupiditate in ve','Aut in minus ducimus',NULL,'Id perspiciatis eni','3','Occaecat sit dolor ','Laboris quia volupta','Et laboris amet id ','[\"\",\"\"]','Crawford',NULL,'Illiana Murphy','Ad exercitationem qu','Murphy Hebert','Error aperiam repreh','+1 (445) 666-8223','Mccullough','Hilel','Owen Mullen','Fletcher','Hermione','Ulric Hogan','[]','[]','[]','[]','[]','[]','[]','[]','2019-11-25 18:09:21','2019-11-25 18:09:21',NULL),(6,49,0,0,'Quibusdam similique ','Ea rerum exercitatio','Barnett','Audra','Patience Spears','Illo quae ut omnis a','option 2','option 4','option 3','option 4','2012-09-24','option 4',4,'option 2','2018-01-12','Quas assumenda ea vo','Female','Maried','Consequat Quas cons','Sequi et do quos odi','Optio dolor volupta','Reprehenderit aspern','Natus voluptate ulla','Sed voluptatem adipi','Rerum dolor quam et ',NULL,'Velit est ut sapien','option1','option2','Country 1','Iusto ut velit amet','Quis ipsa pariatur','Aut voluptate itaque','Adipisicing consecte','Est vel exercitation','Recusandae Rerum co','43426','Quo consequatur in ','Quo unde aliquid har',NULL,'Consequatur Aute et','6','Illo illo adipisci d','Eius occaecat ea qui','Minim nemo obcaecati','[\"\",\"\"]','Watkins',NULL,'Nathaniel Hayden','Nobis enim atque occ','Quintessa Peters','Praesentium ipsum qu','+1 (202) 162-9416','Franklin','Dorian','Oren Howard','Harvey','Damian','Zena Goodwin','[{\"name\":\"Ut quis sunt repelle\",\"dob\":\"1987-02-11\",\"age\":\"5\"},{\"name\":\"Quo quo sed sint ut\",\"dob\":\"2014-06-16\",\"age\":\"80\"},{\"name\":\"Commodi labore commo\",\"dob\":\"1980-05-05\",\"age\":\"95\"},{\"name\":\"Quae minus aut reici\",\"dob\":\"2001-12-16\",\"age\":\"13\"},{\"name\":\"Reprehenderit qui qu\",\"dob\":\"2018-09-25\",\"age\":\"19\"},{\"name\":\"Tempora inventore re\",\"dob\":\"1993-08-24\",\"age\":\"33\"},{\"name\":\"Quo ut quisquam reru\",\"dob\":\"1975-05-24\",\"age\":\"84\"},{\"name\":\"Suscipit maxime enim\",\"dob\":\"1994-12-23\",\"age\":\"99\"},{\"name\":\"Deserunt sed dolorem\",\"dob\":\"2011-03-28\",\"age\":\"52\"}]','[{\"level\":\"Doloribus quia labor\",\"name_of_school\":\"Vero dolores in dele\",\"degree_course\":\"Facilis omnis do id \",\"year_graduated\":\"Vero hic sint conse\",\"highest_grade_level_units_earned\":\"Perspiciatis eum lo\",\"date_from\":\"2008-06-17\",\"date_to\":\"1975-06-01\",\"scholarship_academic_honors_recieved\":\"Voluptatum qui aute \"},{\"level\":\"Totam voluptatibus v\",\"name_of_school\":\"Et veniam fugiat c\",\"degree_course\":\"Illum accusantium p\",\"year_graduated\":\"Eos voluptate commo\",\"highest_grade_level_units_earned\":\"Eum est provident \",\"date_from\":\"2009-02-15\",\"date_to\":\"1990-12-04\",\"scholarship_academic_honors_recieved\":\"Nostrud deleniti lab\"},{\"level\":\"Nulla nostrum quia i\",\"name_of_school\":\"Quo laborum reprehen\",\"degree_course\":\"Aliquip tempore ips\",\"year_graduated\":\"Aperiam quaerat dolo\",\"highest_grade_level_units_earned\":\"Dolor quia ea molest\",\"date_from\":\"1996-05-09\",\"date_to\":\"2009-08-25\",\"scholarship_academic_honors_recieved\":\"Libero accusantium s\"},{\"level\":\"Amet doloribus inve\",\"name_of_school\":\"Quasi ducimus non e\",\"degree_course\":\"Ad quasi est dolore\",\"year_graduated\":\"Sed voluptatem sit \",\"highest_grade_level_units_earned\":\"Reprehenderit volupt\",\"date_from\":\"1999-08-19\",\"date_to\":\"2005-08-18\",\"scholarship_academic_honors_recieved\":\"Repellendus Et minu\"},{\"level\":\"Enim aut pariatur E\",\"name_of_school\":\"Exercitation vel iru\",\"degree_course\":\"Explicabo Ipsum co\",\"year_graduated\":\"Eos dolore adipisic\",\"highest_grade_level_units_earned\":\"Veritatis asperiores\",\"date_from\":\"1996-05-05\",\"date_to\":\"1977-06-01\",\"scholarship_academic_honors_recieved\":\"Quae similique quo i\"}]','[{\"type_of_eligibility\":\"Facilis est velit pa\",\"career_service_under_special_laws_ces_csee\":\"Eum ut ipsum cumque\",\"rating\":\"Nemo consequatur et \",\"date_of_examination_conferment\":\"1984-06-01\",\"place_of_examination_conferment\":\"Voluptatem dolore c\",\"highest_grade_level_units_earned\":\"Perferendis obcaecat\",\"licince_no\":\"Voluptate asperiores\",\"date_of_release\":\"1982-06-08\"},{\"type_of_eligibility\":\"Irure quia debitis p\",\"career_service_under_special_laws_ces_csee\":\"Dolor labore eaque u\",\"rating\":\"Proident dolore ear\",\"date_of_examination_conferment\":\"1988-12-14\",\"place_of_examination_conferment\":\"Est commodi et aut \",\"highest_grade_level_units_earned\":\"Nesciunt autem inci\",\"licince_no\":\"Omnis non nostrud vi\",\"date_of_release\":\"1971-11-25\"},{\"type_of_eligibility\":\"Dolores itaque et pr\",\"career_service_under_special_laws_ces_csee\":\"Et corporis facilis \",\"rating\":\"Nemo tempor esse qu\",\"date_of_examination_conferment\":\"1981-09-28\",\"place_of_examination_conferment\":\"Elit eiusmod modi q\",\"highest_grade_level_units_earned\":\"Ut saepe esse rem p\",\"licince_no\":\"Quae eligendi minus \",\"date_of_release\":\"1993-05-23\"},{\"type_of_eligibility\":\"Molestias et sed vol\",\"career_service_under_special_laws_ces_csee\":\"Quae omnis libero in\",\"rating\":\"Delectus eos expli\",\"date_of_examination_conferment\":\"2010-03-12\",\"place_of_examination_conferment\":\"Vero dolorem consequ\",\"highest_grade_level_units_earned\":\"Et eum architecto qu\",\"licince_no\":\"Necessitatibus volup\",\"date_of_release\":\"1996-09-12\"}]','[{\"include_date_from\":\"2011-10-11\",\"include_date_to\":\"2009-03-03\",\"position_title\":\"Quia aut saepe non a\",\"department_agency_office_company\":\"Ipsum obcaecati sit\",\"monthly_salary\":\"52\",\"salary_grade_step_increment\":\"Et qui distinctio M\",\"status_of_appointment\":\"Eius cum nesciunt p\",\"govt_service\":\"Sit quasi ea ut saep\"},{\"include_date_from\":\"2003-08-25\",\"include_date_to\":\"1989-03-21\",\"position_title\":\"Sint ipsum expedita\",\"department_agency_office_company\":\"Cillum aute sint qua\",\"monthly_salary\":\"68\",\"salary_grade_step_increment\":\"At maiores qui rerum\",\"status_of_appointment\":\"Ut vel quod ad venia\",\"govt_service\":\"Earum aut occaecat i\"},{\"include_date_from\":\"2002-08-03\",\"include_date_to\":\"2017-06-10\",\"position_title\":\"Non dolores aperiam \",\"department_agency_office_company\":\"Commodi deserunt eiu\",\"monthly_salary\":\"3\",\"salary_grade_step_increment\":\"Omnis mollit est rei\",\"status_of_appointment\":\"Velit voluptate cons\",\"govt_service\":\"Et atque sequi labor\"},{\"include_date_from\":\"1984-03-11\",\"include_date_to\":\"2011-03-06\",\"position_title\":\"Ullamco ut eum qui r\",\"department_agency_office_company\":\"Qui aliquam rerum pa\",\"monthly_salary\":\"88\",\"salary_grade_step_increment\":\"Amet eaque consequu\",\"status_of_appointment\":\"Facere tempora moles\",\"govt_service\":\"Fuga Laudantium qu\"}]','[{\"name_address_of_organization\":\"Dolor minim providen\",\"include_date_from\":\"1979-07-18\",\"include_date_to\":\"2009-02-19\",\"number_of_hours\":\"10\",\"position_nature_of_work\":\"Quos voluptatum irur\"},{\"name_address_of_organization\":\"Dolore est ea perspi\",\"include_date_from\":\"1977-10-04\",\"include_date_to\":\"1979-08-25\",\"number_of_hours\":\"22\",\"position_nature_of_work\":\"Sunt ut id mollitia\"},{\"name_address_of_organization\":\"Non sunt voluptatem \",\"include_date_from\":\"1978-06-04\",\"include_date_to\":\"1993-11-25\",\"number_of_hours\":\"54\",\"position_nature_of_work\":\"Illo iste irure reru\"},{\"name_address_of_organization\":\"Quis et consequatur \",\"include_date_from\":\"1990-06-16\",\"include_date_to\":\"1996-06-24\",\"number_of_hours\":\"74\",\"position_nature_of_work\":\"Cupidatat expedita m\"}]','[]','[{\"special_skills_hobbies\":\"Commodo ducimus aut\",\"non_academic_distinctions_recognitions\":\"Enim esse in pariatu\",\"membership_in_assoc_org\":\"Ex sint consequuntur\"},{\"special_skills_hobbies\":\"Aut minus occaecat o\",\"non_academic_distinctions_recognitions\":\"Consectetur placeat\",\"membership_in_assoc_org\":\"Error molestiae magn\"},{\"special_skills_hobbies\":\"Saepe hic nihil ut a\",\"non_academic_distinctions_recognitions\":\"Laboriosam eu inven\",\"membership_in_assoc_org\":\"Voluptatem ex persp\"},{\"special_skills_hobbies\":\"Et cillum voluptas e\",\"non_academic_distinctions_recognitions\":\"Nobis minima volupta\",\"membership_in_assoc_org\":\"Mollitia voluptas es\"}]','[{\"name\":\"Nulla nihil ipsum se\",\"address\":\"Iure iste quidem nes\",\"tel_no\":\"Voluptatem ea consec\"},{\"name\":\"Mollit nisi dolorem \",\"address\":\"Est possimus vel am\",\"tel_no\":\"Deserunt expedita qu\"},{\"name\":\"Quia officiis ut par\",\"address\":\"Lorem dignissimos il\",\"tel_no\":\"Sunt commodo irure n\"},{\"name\":\"Est non ratione hic \",\"address\":\"Repudiandae exercita\",\"tel_no\":\"Voluptas repudiandae\"}]','2019-11-25 18:10:02','2019-11-25 18:10:02',NULL),(7,82,0,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1990-05-28',NULL,'female',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2019-12-01 17:54:25','2019-12-01 17:54:25',NULL),(8,84,0,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2016-07-11',NULL,'female',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2019-12-01 17:54:55','2019-12-01 17:54:55',NULL),(9,86,0,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1982-05-05',NULL,'female',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2019-12-01 17:56:16','2019-12-01 17:56:16',NULL),(10,87,0,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2004-04-02',NULL,'female',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2019-12-01 17:57:37','2019-12-01 17:57:37',NULL),(11,88,0,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2016-02-27',NULL,'female',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2019-12-01 18:04:24','2019-12-01 18:04:24',NULL),(12,89,0,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1971-04-15',NULL,'female',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2019-12-01 18:48:53','2019-12-01 18:48:53',NULL),(13,90,0,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1971-11-28',NULL,'female',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2019-12-01 18:51:16','2019-12-01 18:51:16',NULL),(14,91,0,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1986-01-05',NULL,'female',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2019-12-01 19:02:44','2019-12-01 19:02:44',NULL),(15,92,0,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1988-09-11',NULL,'female',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2019-12-01 19:05:00','2019-12-01 19:05:00',NULL),(16,93,0,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1977-10-28',NULL,'female',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2019-12-01 19:52:04','2019-12-01 19:52:04',NULL),(17,95,0,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2006-12-14',NULL,'female',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Sed fuga Modi dolor',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2019-12-01 19:53:13','2019-12-01 19:53:13',NULL),(18,96,0,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1970-02-06',NULL,'female',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Inventore dolor atqu',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2019-12-01 20:35:53','2019-12-01 20:35:53',NULL),(19,97,0,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1991-11-27',NULL,'female',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Dolor sed sit eius',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2019-12-01 20:40:58','2019-12-01 20:40:58',NULL),(20,98,0,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1976-10-11',NULL,'female',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Id necessitatibus c',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2019-12-01 20:43:52','2019-12-01 20:43:52',NULL),(21,99,0,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2014-08-21',NULL,'female',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Rerum vero esse rati',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2019-12-01 20:44:40','2019-12-01 20:44:40',NULL),(22,100,0,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1990-08-20',NULL,'female',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Odio laboris at eius',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2019-12-01 20:59:47','2019-12-01 20:59:47',NULL),(23,101,0,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1970-04-11',NULL,'female',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Ducimus officiis qu',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2019-12-01 22:01:49','2019-12-01 22:01:49',NULL),(24,102,0,0,NULL,NULL,'Perkins','Hollee',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2011-12-23',NULL,'female',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Rerum numquam repreh',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2019-12-01 22:08:03','2019-12-01 22:08:03',NULL),(25,103,0,0,NULL,NULL,'Beck','Barry',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1979-02-22',NULL,'female',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Dolor in dignissimos',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2019-12-01 22:09:21','2019-12-01 22:09:21',NULL),(26,104,0,0,NULL,NULL,'Preston','Philip',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1986-05-09',NULL,'female',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Quia mollitia quo cu',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2019-12-01 22:14:22','2019-12-01 22:14:22',NULL),(27,105,0,0,NULL,NULL,'Byrd','Aurora',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1988-11-16',NULL,'female',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Consectetur dolores',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2019-12-01 22:17:43','2019-12-01 22:17:43',NULL),(28,106,0,0,NULL,NULL,'lastname','firstname',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2019-12-04',NULL,'male',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'sdasdadasd',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2019-12-01 22:23:29','2019-12-01 22:23:29',NULL),(29,107,0,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1978-02-23',NULL,'female',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Ea libero quae vero',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2019-12-01 22:31:01','2019-12-01 22:31:01',NULL),(30,108,0,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1985-04-17',NULL,'female',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Aut dolores nostrum',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2019-12-01 22:32:57','2019-12-01 22:32:57',NULL),(31,109,0,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1985-10-03',NULL,'female',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Magna dolores commod',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2019-12-01 22:34:04','2019-12-01 22:34:04',NULL),(32,110,0,0,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-01-07',NULL,'female',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Neque fugiat dignis',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2019-12-01 22:35:40','2019-12-01 22:35:40',NULL),(33,111,0,0,NULL,NULL,'Walls','Kimberley',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1971-01-21',NULL,'female',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Voluptatem distinct',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2019-12-01 22:39:53','2019-12-01 22:39:53',NULL),(34,112,0,0,NULL,NULL,'asdasd','asdad',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1994-04-05',NULL,'female',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'sersheefdcrstgsrgf',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2019-12-01 23:12:15','2019-12-01 23:12:15',NULL),(35,113,0,0,NULL,NULL,'lastname','firstname',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1994-05-09',NULL,'female',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Bio (brief intro)',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2019-12-01 23:33:49','2019-12-01 23:33:49',NULL),(36,114,0,0,NULL,NULL,'Huff','Yuli',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1973-09-08',NULL,'female',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Deserunt iure archit',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2019-12-03 16:09:40','2019-12-03 16:09:40',NULL),(37,115,0,0,NULL,NULL,'Lawson','Otto',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'1992-01-28',NULL,'female',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Praesentium proident',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2019-12-03 18:42:33','2019-12-03 18:42:33',NULL),(38,116,0,0,NULL,NULL,'Rivas','Malcolm',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2017-03-03',NULL,'female',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'Adipisci repudiandae',NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,NULL,'2019-12-03 19:10:57','2019-12-03 19:10:57',NULL);
+
+/*Table structure for table `role_user` */
+
+DROP TABLE IF EXISTS `role_user`;
+
+CREATE TABLE `role_user` (
+  `role_id` int(10) unsigned NOT NULL,
+  `user_id` int(10) unsigned NOT NULL,
+  PRIMARY KEY (`role_id`,`user_id`),
+  KEY `role_user_user_id_foreign` (`user_id`),
+  CONSTRAINT `role_user_role_id_foreign` FOREIGN KEY (`role_id`) REFERENCES `roles` (`id`) ON DELETE CASCADE,
+  CONSTRAINT `role_user_user_id_foreign` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`) ON DELETE CASCADE
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+/*Data for the table `role_user` */
+
+insert  into `role_user`(`role_id`,`user_id`) values (3,4),(4,5),(4,6),(5,50),(5,51),(5,52),(5,53),(5,56),(5,57),(5,58),(5,60),(5,61),(5,63),(5,64),(5,65),(5,66),(5,67),(5,68),(5,70),(5,71),(5,72),(5,73),(5,75),(5,76),(5,77),(5,86),(5,87),(5,88),(5,89),(5,90),(5,91),(5,92),(5,93),(5,95),(5,96),(5,97),(5,98),(5,99),(5,100),(5,101),(5,102),(5,103),(5,104),(3,105),(5,106),(5,107),(5,108),(5,109),(5,110),(5,111),(5,112),(5,113),(5,114),(5,115),(5,116);
+
+/*Table structure for table `roles` */
+
+DROP TABLE IF EXISTS `roles`;
+
+CREATE TABLE `roles` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `name` varchar(255) COLLATE utf8mb4_unicode_ci NOT NULL,
+  `label` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+/*Data for the table `roles` */
+
+insert  into `roles`(`id`,`name`,`label`,`created_at`,`updated_at`) values (3,'Admin','Admin','2019-11-02 19:28:07','2019-11-02 19:28:07'),(4,'User','User','2019-11-02 19:28:20','2019-11-02 19:28:20'),(5,'jobseeker','jobseeker','2019-11-25 18:13:59','2019-11-25 18:13:59');
+
+/*Table structure for table `sample_cruds` */
+
+DROP TABLE IF EXISTS `sample_cruds`;
+
+CREATE TABLE `sample_cruds` (
+  `id` int(10) unsigned NOT NULL AUTO_INCREMENT,
+  `created_at` timestamp NULL DEFAULT NULL,
+  `updated_at` timestamp NULL DEFAULT NULL,
+  `deleted_at` timestamp NULL DEFAULT NULL,
+  `first_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  `last_name` varchar(255) COLLATE utf8mb4_unicode_ci DEFAULT NULL,
+  PRIMARY KEY (`id`)
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci;
+
+/*Data for the table `sample_cruds` */
+
 /*Table structure for table `users` */
 
 DROP TABLE IF EXISTS `users`;
