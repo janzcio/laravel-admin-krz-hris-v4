@@ -36,3 +36,7 @@ Route::get('logout', 'Auth\LoginController@logout', function () {
 
 
 Route::resource('admin/jobhirings', 'jobhirings\\jobhiringsController');
+
+/*applicants*/
+Route::get('admin/jobhirings/{jhid}/applicants', 'jobhirings\jobhiringsController@showApplicants');
+

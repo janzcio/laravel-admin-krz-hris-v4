@@ -32,13 +32,13 @@
                     <img alt="image" class="img-fluid" src="{{ asset('inspinia_admin-v2.9.2/img/profile_big.jpg') }}">
                 </div>
                 <div class="ibox-content profile-content">
-                    <h4><strong>{{ $data->firstname }} {{ $data->surname }}</strong></h4>
+                    <h4><strong>{{ isset($data) ? $data->firstname : ''}} {{ isset($data) ? $data->surname : '' }}</strong></h4>
                     <p><i class="fa fa-map-marker"></i> Riviera State 32/106</p>
                     <h5>
                         About me
                     </h5>
                     <p>
-                        {{ $data->bio }}
+                        {{ isset($data) ? $data->bio : '' }}
                     </p>
                     <!-- <div class="user-button">
                         <div class="row">
@@ -55,7 +55,8 @@
             
         </div>
         <div>
-            <button class="btn btn-primary pull-right">Edit</button>
+            <button class="btn btn-primary pull-left">Edit</button>
+            <button class="btn btn-success pull-right">Edit</button>
         </div>
     </div>
     <div class="col-md-8">
@@ -76,119 +77,119 @@
                                 @if($role != "jobseeker")
                                     <tr>
                                         <th>Device ID</th>
-                                        <td> {{ $data->device_id}} </td>
+                                        <td><span class="pull-left">:</span> {{ isset($data) ? $data->device_id : ''}} </td>
                                     </tr>
 
                                     <tr>
                                         <th>Employee ID</th>
-                                        <td> {{ $data->device_id}} </td>
+                                        <td><span class="pull-left">:</span> {{ isset($data) ? $data->device_id : ''}} </td>
                                     </tr>
                                 @endif
                                 <tr>
                                     <th>Surname</th>
-                                    <td> {{ $data->surname}} </td>
+                                    <td><span class="pull-left">:</span> {{ isset($data) ? $data->surname : ''}} </td>
                                 </tr>
                                 <tr>
                                     <th>Firstname</th>
-                                    <td> {{ $data->firstname}} </td>
+                                    <td><span class="pull-left">:</span> {{ isset($data) ? $data->firstname : ''}} </td>
                                 </tr>
                                 <tr>
                                     <th>Middlename</th>
-                                    <td> {{ $data->middlename}} </td>
+                                    <td><span class="pull-left">:</span> {{ isset($data) ? $data->middlename : ''}} </td>
                                 </tr>
                                 <tr>
                                     <th>Suffix</th>
-                                    <td> {{ $data->suffix}} </td>
+                                    <td><span class="pull-left">:</span> {{ isset($data) ? $data->suffix : ''}} </td>
                                 </tr>
                                 @if($role != "jobseeker")
                                     <tr>
                                         <th>Department</th>
-                                        <td> {{ $data->surname}} </td>
+                                        <td><span class="pull-left">:</span> {{ isset($data) ? $data->surname : ''}} </td>
                                     </tr>
                                 @endif
                                 <tr>
                                     <th>Department</th>
-                                    <td> {{ $data->department}} </td>
+                                    <td><span class="pull-left">:</span> {{ isset($data) ? $data->department : ''}} </td>
                                 </tr>
                                 <tr>
                                     <th>Section</th>
-                                    <td> {{ $data->section}} </td>
+                                    <td><span class="pull-left">:</span> {{ isset($data) ? $data->section : ''}} </td>
                                 </tr>
                                 <tr>
                                     <th>Position</th>
-                                    <td> {{ $data->position}} </td>
+                                    <td><span class="pull-left">:</span> {{ isset($data) ? $data->position : ''}} </td>
                                 </tr>
                                 <tr>
                                     <th>Salary Schedule</th>
-                                    <td> {{ $data->salary_schedule}} </td>
+                                    <td><span class="pull-left">:</span> {{ isset($data) ? $data->salary_schedule : ''}} </td>
                                 </tr>
                                 <tr>
                                     <th>SG</th>
-                                    <td> {{ $data->sg}} </td>
+                                    <td><span class="pull-left">:</span> {{ isset($data) ? $data->sg : ''}} </td>
                                 </tr>
                                 <tr>
                                     <th>Step</th>
-                                    <td> {{ $data->step}} </td>
+                                    <td><span class="pull-left">:</span> {{ isset($data) ? $data->step : ''}} </td>
                                 </tr>
                                 <tr>
                                     <th>Month Salary</th>
-                                    <td> {{ $data->surname}} </td>
+                                    <td><span class="pull-left">:</span> {{ isset($data) ? $data->surname : ''}} </td>
                                 </tr>
                                 <tr>
                                     <th>Date of Birth</th>
-                                    <td> {{ $data->surname}} </td>
+                                    <td><span class="pull-left">:</span> {{ isset($data) ? $data->surname : ''}} </td>
                                 </tr>
                                 <tr>
                                     <th>Sex</th>
-                                    <td> {{ $data->surname}} </td>
+                                    <td><span class="pull-left">:</span> {{ isset($data) ? $data->surname : ''}} </td>
                                 </tr>
                                 <tr>
                                     <th>Civil Status</th>
-                                    <td> {{ $data->surname}} </td>
+                                    <td><span class="pull-left">:</span> {{ isset($data) ? $data->surname : ''}} </td>
                                 </tr>
                                 <tr>
                                     <th>Height(m)</th>
-                                    <td> {{ $data->surname}} </td>
+                                    <td><span class="pull-left">:</span> {{ isset($data) ? $data->surname : ''}} </td>
                                 </tr>
                                 <tr>
                                     <th>Weight(Kg)</th>
-                                    <td> {{ $data->surname}} </td>
+                                    <td><span class="pull-left">:</span> {{ isset($data) ? $data->surname : ''}} </td>
                                 </tr>
                                 <tr>
                                     <th>GSIS ID No.</th>
-                                    <td> {{ $data->surname}} </td>
+                                    <td><span class="pull-left">:</span> {{ isset($data) ? $data->surname : ''}} </td>
                                 </tr>
                                 <tr>
                                     <th>PAG-IBIG ID No.</th>
-                                    <td> {{ $data->surname}} </td>
+                                    <td><span class="pull-left">:</span> {{ isset($data) ? $data->surname : ''}} </td>
                                 </tr>
                                 <tr>
                                     <th>Phil Health No.</th>
-                                    <td> {{ $data->surname}} </td>
+                                    <td><span class="pull-left">:</span> {{ isset($data) ? $data->surname : ''}} </td>
                                 </tr>
                                 <tr>
                                     <th>SSS No.</th>
-                                    <td> {{ $data->surname}} </td>
+                                    <td><span class="pull-left">:</span> {{ isset($data) ? $data->surname : ''}} </td>
                                 </tr>
                                 <tr>
                                     <th>TIN No.</th>
-                                    <td> {{ $data->surname}} </td>
+                                    <td><span class="pull-left">:</span> {{ isset($data) ? $data->surname : ''}} </td>
                                 </tr>
                                 <tr>
                                     <th>Agency Emplo. No</th>
-                                    <td> {{ $data->surname}} </td>
+                                    <td><span class="pull-left">:</span> {{ isset($data) ? $data->surname : ''}} </td>
                                 </tr>
                                 <tr>
                                     <th>Citizenship</th>
-                                    <td> {{ $data->surname}} </td>
+                                    <td><span class="pull-left">:</span> {{ isset($data) ? $data->surname : ''}} </td>
                                 </tr>
                                 <tr>
                                     <th>GSIS</th>
-                                    <td> {{ $data->surname}} </td>
+                                    <td><span class="pull-left">:</span> {{ isset($data) ? $data->surname : ''}} </td>
                                 </tr>
                                 <tr>
                                     <th>Country</th>
-                                    <td> {{ $data->surname}} </td>
+                                    <td><span class="pull-left">:</span> {{ isset($data) ? $data->surname : ''}} </td>
                                 </tr>
                             </table>
                         </div>

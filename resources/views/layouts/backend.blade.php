@@ -35,7 +35,7 @@
                             <span class="text-muted text-xs block">Art Director <b class="caret"></b></span>
                         </a>
                         <ul class="dropdown-menu animated fadeInRight m-t-xs">
-                            <li><a class="dropdown-item" href="profile.html">Profile</a></li>
+                            <li><a class="dropdown-item" href="/profile">Profile</a></li>
                             <li class="dropdown-divider"></li>
                             <li><a class="dropdown-item" href="/logout">Logout</a></li>
                         </ul>

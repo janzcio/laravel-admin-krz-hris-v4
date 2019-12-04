@@ -186,9 +186,13 @@ class UsersController extends Controller
     }
 
     public function profile(){
-        $user_id = \Auth::user()->id;
+        $user_id = null;
         $role = \Auth::user()->roles->pluck('name')[0];
-        
+        if (isset($_GET["uid"])) {
+            $user_id =  $_GET["uid"];
+        }else{
+           $user_id =  \Auth::user()->id;
+        }
         $data = Profile::where('user_id', $user_id)->first();
         return view('admin.profile.index', compact('data','role'));
     }
