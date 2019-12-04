@@ -51,9 +51,13 @@
                         </div>
                     </div> -->
                 </div>
+            </div>
+            
+        </div>
+        <div>
+            <button class="btn btn-primary pull-right">Edit</button>
         </div>
     </div>
-        </div>
     <div class="col-md-8">
         <div class="ibox">
             <div class="ibox-title">
@@ -72,123 +76,119 @@
                                 @if($role != "jobseeker")
                                     <tr>
                                         <th>Device ID</th>
-                                        <td> xxxxx </td>
+                                        <td> {{ $data->device_id}} </td>
                                     </tr>
 
                                     <tr>
                                         <th>Employee ID</th>
-                                        <td> xxxxx </td>
+                                        <td> {{ $data->device_id}} </td>
                                     </tr>
                                 @endif
                                 <tr>
                                     <th>Surname</th>
-                                    <td> xxxxx </td>
+                                    <td> {{ $data->surname}} </td>
                                 </tr>
                                 <tr>
                                     <th>Firstname</th>
-                                    <td> xxxxx </td>
+                                    <td> {{ $data->firstname}} </td>
                                 </tr>
                                 <tr>
                                     <th>Middlename</th>
-                                    <td> xxxxx </td>
+                                    <td> {{ $data->middlename}} </td>
                                 </tr>
                                 <tr>
                                     <th>Suffix</th>
-                                    <td> xxxxx </td>
+                                    <td> {{ $data->suffix}} </td>
                                 </tr>
                                 @if($role != "jobseeker")
                                     <tr>
                                         <th>Department</th>
-                                        <td> xxxxx </td>
+                                        <td> {{ $data->surname}} </td>
                                     </tr>
                                 @endif
                                 <tr>
                                     <th>Department</th>
-                                    <td> xxxxx </td>
+                                    <td> {{ $data->department}} </td>
                                 </tr>
                                 <tr>
                                     <th>Section</th>
-                                    <td> xxxxx </td>
+                                    <td> {{ $data->section}} </td>
                                 </tr>
                                 <tr>
                                     <th>Position</th>
-                                    <td> xxxxx </td>
+                                    <td> {{ $data->position}} </td>
                                 </tr>
                                 <tr>
                                     <th>Salary Schedule</th>
-                                    <td> xxxxx </td>
+                                    <td> {{ $data->salary_schedule}} </td>
                                 </tr>
                                 <tr>
                                     <th>SG</th>
-                                    <td> xxxxx </td>
+                                    <td> {{ $data->sg}} </td>
                                 </tr>
                                 <tr>
                                     <th>Step</th>
-                                    <td> xxxxx </td>
-                                </tr>
-                                <tr>
-                                    <th>Suffix</th>
-                                    <td> xxxxx </td>
+                                    <td> {{ $data->step}} </td>
                                 </tr>
                                 <tr>
                                     <th>Month Salary</th>
-                                    <td> xxxxx </td>
+                                    <td> {{ $data->surname}} </td>
                                 </tr>
                                 <tr>
                                     <th>Date of Birth</th>
-                                    <td> xxxxx </td>
+                                    <td> {{ $data->surname}} </td>
                                 </tr>
                                 <tr>
                                     <th>Sex</th>
-                                    <td> xxxxx </td>
+                                    <td> {{ $data->surname}} </td>
                                 </tr>
                                 <tr>
                                     <th>Civil Status</th>
-                                    <td> xxxxx </td>
+                                    <td> {{ $data->surname}} </td>
                                 </tr>
                                 <tr>
                                     <th>Height(m)</th>
-                                    <td> xxxxx </td>
+                                    <td> {{ $data->surname}} </td>
                                 </tr>
                                 <tr>
                                     <th>Weight(Kg)</th>
-                                    <td> xxxxx </td>
+                                    <td> {{ $data->surname}} </td>
                                 </tr>
                                 <tr>
                                     <th>GSIS ID No.</th>
-                                    <td> xxxxx </td>
+                                    <td> {{ $data->surname}} </td>
                                 </tr>
                                 <tr>
                                     <th>PAG-IBIG ID No.</th>
-                                    <td> xxxxx </td>
+                                    <td> {{ $data->surname}} </td>
                                 </tr>
                                 <tr>
                                     <th>Phil Health No.</th>
-                                    <td> xxxxx </td>
+                                    <td> {{ $data->surname}} </td>
                                 </tr>
                                 <tr>
                                     <th>SSS No.</th>
-                                    <td> xxxxx </td>
+                                    <td> {{ $data->surname}} </td>
                                 </tr>
                                 <tr>
                                     <th>TIN No.</th>
-                                    <td> xxxxx </td>
+                                    <td> {{ $data->surname}} </td>
                                 </tr>
                                 <tr>
                                     <th>Agency Emplo. No</th>
-                                    <td> xxxxx </td>
+                                    <td> {{ $data->surname}} </td>
                                 </tr>
                                 <tr>
                                     <th>Citizenship</th>
-                                    <td> xxxxx </td>
+                                    <td> {{ $data->surname}} </td>
                                 </tr>
                                 <tr>
                                     <th>GSIS</th>
-                                    <td> xxxxx </td>
+                                    <td> {{ $data->surname}} </td>
                                 </tr>
                                 <tr>
                                     <th>Country</th>
-                                    <td> xxxxx </td>
+                                    <td> {{ $data->surname}} </td>
                                 </tr>
                             </table>
                         </div>
@@ -441,6 +441,205 @@
                                     <td>xxxx</td>
                                     <td>xxxx</td>
                                     <td>xxxx</td>
+                                </tr>
+                                <tr>
+                                    <td>xxxx</td>
+                                    <td>xxxx</td>
+                                    <td>xxxx</td>
+                                </tr>
+                            </table>
+                        </div>
+                        
+                        
+                        
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="ibox ">
+            <div class="ibox-title">
+                <h5>Work Experience</h5>
+                <div class="ibox-tools">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="ibox-content" style="display: none;">
+                <div>
+                    <div class="feed-activity-list">
+                        <div class="feed-element">
+                            <table class="table" width="100">
+                                <tr>
+                                    <th>Include Date From</th>
+                                    <th>Include Date To </th>
+                                    <th>Position Title</th>
+                                    <th>Department/Agency/Office/Company</th>
+                                    <th>Monthly Salary</th>
+                                    <th>Salary Grade & Step Increment</th>
+                                    <th>Status of Appointment</th>
+                                    <th>Gov't Service</th>
+                                </tr>
+                                <tr>
+                                    <td>xxxx</td>
+                                    <td>xxxx</td>
+                                    <td>xxxx</td>
+                                    <td>xxxx</td>
+                                    <td>xxxx</td>
+                                    <td>xxxx</td>
+                                    <td>xxxx</td>
+                                    <td>xxxx</td>
+                                </tr>
+                            </table>
+                        </div>
+                        
+                        
+                        
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="ibox ">
+            <div class="ibox-title">
+                <h5>Voluntary Work</h5>
+                <div class="ibox-tools">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="ibox-content" style="display: none;">
+                <div>
+                    <div class="feed-activity-list">
+                        <div class="feed-element">
+                            <table class="table" width="100">
+                                <tr>
+                                    <th>Name and address of organization</th>
+                                    <th>Include Date from</th>
+                                    <th>Include Date To</th>
+                                    <th>Number of hours</th>
+                                    <th>Position/Nature of work</th>
+                                </tr>
+                                <tr>
+                                    <td>xxxx</td>
+                                    <td>xxxx</td>
+                                    <td>xxxx</td>
+                                    <td>xxxx</td>
+                                    <td>xxxx</td>
+                                    <td>xxxx</td>
+                                    <td>xxxx</td>
+                                    <td>xxxx</td>
+                                </tr>
+                            </table>
+                        </div>
+                        
+                        
+                        
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="ibox ">
+            <div class="ibox-title">
+                <h5>Training Programs</h5>
+                <div class="ibox-tools">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="ibox-content" style="display: none;">
+                <div>
+                    <div class="feed-activity-list">
+                        <div class="feed-element">
+                            <table class="table" width="100">
+                                <tr>
+                                    <th>    Title of learning and Development Inventions/Training program</th>
+                                    <th>Include Date From</th>
+                                    <th>Include Date to</th>
+                                    <th>Number of hours</th>
+                                    <th>Position/Nature of work</th>
+                                </tr>
+                                <tr>
+                                    <td>xxxx</td>
+                                    <td>xxxx</td>
+                                    <td>xxxx</td>
+                                    <td>xxxx</td>
+                                    <td>xxxx</td>
+                                    <td>xxxx</td>
+                                    <td>xxxx</td>
+                                    <td>xxxx</td>
+                                </tr>
+                            </table>
+                        </div>
+                        
+                        
+                        
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="ibox ">
+            <div class="ibox-title">
+                <h5>Other Information</h5>
+                <div class="ibox-tools">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="ibox-content" style="display: none;">
+                <div>
+                    <div class="feed-activity-list">
+                        <div class="feed-element">
+                            <table class="table" width="100">
+                                <tr>
+                                    <th>Special Skills / Hobbies</th>
+                                    <th>Non-Academ Distinctions / Recognition</th>
+                                    <th>Membership in Association/Organization  </th>
+                                </tr>
+                                <tr>
+                                    <td>xxxx</td>
+                                    <td>xxxx</td>
+                                    <td>xxxx</td>
+                                </tr>
+                            </table>
+                        </div>
+                        
+                        
+                        
+                    </div>
+
+                </div>
+
+            </div>
+        </div>
+        <div class="ibox ">
+            <div class="ibox-title">
+                <h5>References (Person not related by consanguinity or affinity to applicant / appointee)</h5>
+                <div class="ibox-tools">
+                    <a class="collapse-link">
+                        <i class="fa fa-chevron-up"></i>
+                    </a>
+                </div>
+            </div>
+            <div class="ibox-content" style="display: none;">
+                <div>
+                    <div class="feed-activity-list">
+                        <div class="feed-element">
+                            <table class="table" width="100">
+                                <tr>
+                                    <th>Name</th>
+                                    <th>Address</th>
+                                    <th>Tel No </th>
                                 </tr>
                                 <tr>
                                     <td>xxxx</td>
