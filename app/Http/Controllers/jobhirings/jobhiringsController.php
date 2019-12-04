@@ -7,6 +7,7 @@ use App\Http\Controllers\Controller;
 use App\Applicant;
 use App\jobhiring;
 use App\Profile;
+use App\Message;
 use Illuminate\Http\Request;
 
 class jobhiringsController extends Controller
@@ -137,11 +138,12 @@ class jobhiringsController extends Controller
     {
         $Profile = new Profile();
         $applicants = Applicant::where('jobhiring_id', $jhid)->get();
-        // var_dump($applicants);
-        // die();
         $jh = jobhiring::getAllJH();
         $p = $Profile->getProfileByuserId();
-        // print_r("shit"); echo "<br>";
-        return view('admin.jobhirings.applicants', compact('applicants','jh','p'));
+        $message = Message::getAllMessagesByUIDJHID();
+
+        
+
+        return view('admin.jobhirings.applicants', compact('applicants','jh','p','message','jhid'));
     }
 }

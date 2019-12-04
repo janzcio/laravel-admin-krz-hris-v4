@@ -5,7 +5,7 @@ namespace App;
 use Illuminate\Database\Eloquent\Model;
 use Illuminate\Database\Eloquent\SoftDeletes;
 
-class jobhiring extends Model
+class Message extends Model
 {
     use SoftDeletes;
     /**
@@ -13,7 +13,7 @@ class jobhiring extends Model
      *
      * @var string
      */
-    protected $table = 'jobhirings';
+    protected $table = 'messages';
 
     /**
     * The database primary key value.
@@ -27,18 +27,16 @@ class jobhiring extends Model
      *
      * @var array
      */
-    protected $fillable = ['title', 'description', 'requirements', 'responsibilities', 'others', 'location', 'how_to_apply', 'slot', 'position', 'skill_requirement', 'available_from', 'available_to', 'email_address', 'is_active', 'user_id'];
+    protected $fillable = ['jh_id', 'user_id', 'message', 'sent_by'];
 
-
-    public static function getAllJH(){
+    public static function getAllMessagesByUIDJHID(){
         $data = [];
-        $jh = self::get();
-        foreach ($jh as $key => $value) {
-            $data[$value->id] = $value;
+        $message = self::get();
+        foreach ($message as $key => $value) {
+            $data[$value->user_id][$value->jh_id] = $value;
         }
         return $data;
     }
-
 
     
 }

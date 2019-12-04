@@ -16,11 +16,13 @@ Route::get('/welcome', 'HomeController@welcome');
 Route::get('/apply/{id}', 'HomeController@apply');
 Route::get('/js/register', 'HomeController@jsRegister');
 Route::post('/js/store', 'HomeController@jsStore');
+Route::get('/messages', 'Message\MessageController@index');
 
 Auth::routes();
 
 Route::get('/home', 'HomeController@index')->name('home');
 
+/*View Profile*/
 Route::get('/profile', 'Admin\UsersController@profile')->name('home');
 
 Route::get('admin', 'Admin\AdminController@index');
@@ -39,4 +41,8 @@ Route::resource('admin/jobhirings', 'jobhirings\\jobhiringsController');
 
 /*applicants*/
 Route::get('admin/jobhirings/{jhid}/applicants', 'jobhirings\jobhiringsController@showApplicants');
+
+
+
+Route::resource('admin/message', 'Message\\MessageController');
 

@@ -35,7 +35,7 @@
                 <div class="col-lg-12">
                     <div class="ibox ">
                         <div class="ibox-title">
-                            <h4>Applicants for : <b>{{$jh[$jhid]->title}}</b></h4>
+                            <h5>Job Offer : <b>Web Developers</b> <small>List of applicants</small></h5>
                             <!-- <div class="ibox-tools">
                                 <a class="collapse-link">
                                     <i class="fa fa-chevron-up"></i>
@@ -83,12 +83,8 @@
                                                             <td>{{ $p[$item->user_id]->bio }}</td>
                                                             <td><span class="label label-info ">{{ $item->created_at }}</span></td>
                                                             <td class="text-center">
-                                                                <a href="/profile?uid={{$item->user_id}}" class="btn btn-primary btn-xs"><i class="fa fa-eye"></i> View Profile</a>
-                                                                <?php if (isset($message[$item->user_id][$item->jobhiring_id])): ?>
-                                                                    <button disabled="disabled" class="btn btn-w-m btn-info btn-xs" title="Date Send: {{$message[$item->user_id][$item->jobhiring_id]->created_at}}"><i class="fa fa-check"></i> Message Send</button>
-                                                                <?php else: ?>
-                                                                    <a href="/admin/message/create?uid={{$item->user_id}}&&jhid={{$item->jobhiring_id}}" class="btn btn-warning btn-xs"><i class="fa fa-paper-plane"></i> Send a message</a>
-                                                                <?php endif ?>
+                                                                <a href="/profile?uid={{$item->user_id}}" class="btn btn-primary"><i class="fa fa-eye"></i> View Profile</a>
+                                                                <a href="/send-message?uid={{$item->user_id}}" class="btn btn-warning"><i class="fa fa-paper-plane"></i> Send a message</a>
                                                             </td>
                                                         </tr>
                                                     @endif

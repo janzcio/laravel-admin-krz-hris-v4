@@ -55,7 +55,7 @@
             
         </div>
         <div>
-            <button class="btn btn-primary pull-left">Edit</button>
+            <button class="btn btn-primary pull-left"><i class="fa fa-arrow-left"></i> Back</button>
             <button class="btn btn-success pull-right">Edit</button>
         </div>
     </div>
