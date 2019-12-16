@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 use App\jobhiring;
 use App\user;
 use App\Role;
@@ -86,8 +87,8 @@ class HomeController extends Controller
         // $request->name = $request->firstname . " " . $request->lastname;
         // $this->validate($request, ['email' => 'required', 'password' => 'required', 'roles' => 'required']);
         
-        $data = $request->except('password');
-        $data['password'] = bcrypt($request->password);
+        $data = $request;
+        // $data['password'] = Hash::make($request->password);
         $user = User::create([
             'name' => $data['firstname'].' '.$data['lastname'],
             'email' => $data['email'],
