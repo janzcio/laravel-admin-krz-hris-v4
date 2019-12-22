@@ -77,119 +77,119 @@
                                 @if($role != "jobseeker")
                                     <tr>
                                         <th>Device ID</th>
-                                        <td><span class="pull-left">:</span> {{ isset($data) ? $data->device_id : ''}} </td>
+                                        <td><span class="pull-left">:</span>  {{ isset($data) ? $data->device_id : ''}} </td>
                                     </tr>
 
                                     <tr>
                                         <th>Employee ID</th>
-                                        <td><span class="pull-left">:</span> {{ isset($data) ? $data->device_id : ''}} </td>
+                                        <td><span class="pull-left">:</span>  {{ isset($data) ? $data->device_id : ''}} </td>
                                     </tr>
                                 @endif
                                 <tr>
                                     <th>Surname</th>
-                                    <td><span class="pull-left">:</span> {{ isset($data) ? $data->surname : ''}} </td>
+                                    <td><span class="pull-left">:</span>  {{ isset($data) ? $data->surname : ''}} </td>
                                 </tr>
                                 <tr>
                                     <th>Firstname</th>
-                                    <td><span class="pull-left">:</span> {{ isset($data) ? $data->firstname : ''}} </td>
+                                    <td><span class="pull-left">:</span>  {{ isset($data) ? $data->firstname : ''}} </td>
                                 </tr>
                                 <tr>
                                     <th>Middlename</th>
-                                    <td><span class="pull-left">:</span> {{ isset($data) ? $data->middlename : ''}} </td>
+                                    <td><span class="pull-left">:</span>  {{ isset($data) ? $data->middlename : ''}} </td>
                                 </tr>
                                 <tr>
                                     <th>Suffix</th>
-                                    <td><span class="pull-left">:</span> {{ isset($data) ? $data->suffix : ''}} </td>
+                                    <td><span class="pull-left">:</span>  {{ isset($data) ? $data->suffix : ''}} </td>
                                 </tr>
                                 @if($role != "jobseeker")
                                     <tr>
                                         <th>Department</th>
-                                        <td><span class="pull-left">:</span> {{ isset($data) ? $data->surname : ''}} </td>
+                                        <td><span class="pull-left">:</span>  {{ isset($data) ? $data->surname : ''}} </td>
                                     </tr>
                                 @endif
                                 <tr>
                                     <th>Department</th>
-                                    <td><span class="pull-left">:</span> {{ isset($data) ? $data->department : ''}} </td>
+                                    <td><span class="pull-left">:</span>  {{ isset($data) ? $data->department : ''}} </td>
                                 </tr>
                                 <tr>
                                     <th>Section</th>
-                                    <td><span class="pull-left">:</span> {{ isset($data) ? $data->section : ''}} </td>
+                                    <td><span class="pull-left">:</span>  {{ isset($data) ? $data->section : ''}} </td>
                                 </tr>
                                 <tr>
                                     <th>Position</th>
-                                    <td><span class="pull-left">:</span> {{ isset($data) ? $data->position : ''}} </td>
+                                    <td><span class="pull-left">:</span>  {{ isset($data) ? $data->position : ''}} </td>
                                 </tr>
                                 <tr>
                                     <th>Salary Schedule</th>
-                                    <td><span class="pull-left">:</span> {{ isset($data) ? $data->salary_schedule : ''}} </td>
+                                    <td><span class="pull-left">:</span>  {{ isset($data) ? $data->salary_schedule : ''}} </td>
                                 </tr>
                                 <tr>
                                     <th>SG</th>
-                                    <td><span class="pull-left">:</span> {{ isset($data) ? $data->sg : ''}} </td>
+                                    <td><span class="pull-left">:</span>  {{ isset($data) ? $data->sg : ''}} </td>
                                 </tr>
                                 <tr>
                                     <th>Step</th>
-                                    <td><span class="pull-left">:</span> {{ isset($data) ? $data->step : ''}} </td>
+                                    <td><span class="pull-left">:</span>  {{ isset($data) ? $data->step : ''}} </td>
                                 </tr>
                                 <tr>
                                     <th>Month Salary</th>
-                                    <td><span class="pull-left">:</span> {{ isset($data) ? $data->surname : ''}} </td>
+                                    <td><span class="pull-left">:</span>  {{ isset($data) ? $data->monthly_salary : ''}} </td>
                                 </tr>
                                 <tr>
                                     <th>Date of Birth</th>
-                                    <td><span class="pull-left">:</span> {{ isset($data) ? $data->surname : ''}} </td>
+                                    <td><span class="pull-left">:</span>  {{ isset($data) ? $data->date_of_birth : ''}} </td>
                                 </tr>
                                 <tr>
                                     <th>Sex</th>
-                                    <td><span class="pull-left">:</span> {{ isset($data) ? $data->surname : ''}} </td>
+                                    <td><span class="pull-left">:</span>  {{ isset($data) ? $data->sex : ''}} </td>
                                 </tr>
                                 <tr>
                                     <th>Civil Status</th>
-                                    <td><span class="pull-left">:</span> {{ isset($data) ? $data->surname : ''}} </td>
+                                    <td><span class="pull-left">:</span>  {{ isset($data) ? $data->civil_Status : ''}} </td>
                                 </tr>
                                 <tr>
                                     <th>Height(m)</th>
-                                    <td><span class="pull-left">:</span> {{ isset($data) ? $data->surname : ''}} </td>
+                                    <td><span class="pull-left">:</span>  {{ isset($data) ? $data->height : ''}} </td>
                                 </tr>
                                 <tr>
                                     <th>Weight(Kg)</th>
-                                    <td><span class="pull-left">:</span> {{ isset($data) ? $data->surname : ''}} </td>
+                                    <td><span class="pull-left">:</span>  {{ isset($data) ? $data->weight : ''}} </td>
                                 </tr>
                                 <tr>
                                     <th>GSIS ID No.</th>
-                                    <td><span class="pull-left">:</span> {{ isset($data) ? $data->surname : ''}} </td>
+                                    <td><span class="pull-left">:</span>  {{ isset($data) ? $data->gsis_id_no : ''}} </td>
                                 </tr>
                                 <tr>
                                     <th>PAG-IBIG ID No.</th>
-                                    <td><span class="pull-left">:</span> {{ isset($data) ? $data->surname : ''}} </td>
+                                    <td><span class="pull-left">:</span>  {{ isset($data) ? $data->pagibig_id_no : ''}} </td>
                                 </tr>
                                 <tr>
                                     <th>Phil Health No.</th>
-                                    <td><span class="pull-left">:</span> {{ isset($data) ? $data->surname : ''}} </td>
+                                    <td><span class="pull-left">:</span>  {{ isset($data) ? $data->phil_health_no : ''}} </td>
                                 </tr>
                                 <tr>
                                     <th>SSS No.</th>
-                                    <td><span class="pull-left">:</span> {{ isset($data) ? $data->surname : ''}} </td>
+                                    <td><span class="pull-left">:</span>  {{ isset($data) ? $data->sss_no : ''}} </td>
                                 </tr>
                                 <tr>
                                     <th>TIN No.</th>
-                                    <td><span class="pull-left">:</span> {{ isset($data) ? $data->surname : ''}} </td>
+                                    <td><span class="pull-left">:</span>  {{ isset($data) ? $data->tin_no : ''}} </td>
                                 </tr>
                                 <tr>
                                     <th>Agency Emplo. No</th>
-                                    <td><span class="pull-left">:</span> {{ isset($data) ? $data->surname : ''}} </td>
+                                    <td><span class="pull-left">:</span>  {{ isset($data) ? $data->agency_emp_no : ''}} </td>
                                 </tr>
                                 <tr>
                                     <th>Citizenship</th>
-                                    <td><span class="pull-left">:</span> {{ isset($data) ? $data->surname : ''}} </td>
+                                    <td><span class="pull-left">:</span>  {{ isset($data) ? $data->citizenship : ''}} </td>
                                 </tr>
                                 <tr>
                                     <th>GSIS</th>
-                                    <td><span class="pull-left">:</span> {{ isset($data) ? $data->surname : ''}} </td>
+                                    <td><span class="pull-left">:</span>  {{ isset($data) ? $data->gsis_id_no : ''}} </td>
                                 </tr>
                                 <tr>
                                     <th>Country</th>
-                                    <td><span class="pull-left">:</span> {{ isset($data) ? $data->surname : ''}} </td>
+                                    <td><span class="pull-left">:</span>  {{ isset($data) ? $data->country : ''}} </td>
                                 </tr>
                             </table>
                         </div>
@@ -215,31 +215,31 @@
                             <table>
                                 <tr>
                                     <th>House/Block/Lot No.</th>
-                                    <td> xxxxx </td>
+                                    <td> <span class="pull-left">:</span>  {{ isset($data) ? $data->house_block_lot : ''}}  </td>
                                 </tr>
                                 <tr>
                                     <th>Street</th>
-                                    <td> xxxxx </td>
+                                    <td> <span class="pull-left">:</span>  {{ isset($data) ? $data->street : ''}}  </td>
                                 </tr>
                                 <tr>
                                     <th>Subdivision/Village</th>
-                                    <td> xxxxx </td>
+                                    <td> <span class="pull-left">:</span>  {{ isset($data) ? $data->subdivision_or_village : ''}}  </td>
                                 </tr>
                                 <tr>
                                     <th>Barangay</th>
-                                    <td> xxxxx </td>
+                                    <td> <span class="pull-left">:</span>  {{ isset($data) ? $data->barangay : ''}}  </td>
                                 </tr>
                                 <tr>
                                     <th>City/Municipality</th>
-                                    <td> xxxxx </td>
+                                    <td> <span class="pull-left">:</span>  {{ isset($data) ? $data->city_or_municipality : ''}}  </td>
                                 </tr>
                                 <tr>
                                     <th>Province</th>
-                                    <td> xxxxx </td>
+                                    <td> <span class="pull-left">:</span>  {{ isset($data) ? $data->province : ''}}  </td>
                                 </tr>
                                 <tr>
                                     <th>Zip Code</th>
-                                    <td> xxxxx </td>
+                                    <td> <span class="pull-left">:</span>  {{ isset($data) ? $data->zipcode : ''}}  </td>
                                 </tr>
                             </table>
                         </div>
@@ -265,35 +265,35 @@
                             <table>
                                 <tr>
                                     <th>Tel. No.</th>
-                                    <td> xxxxx </td>
+                                    <td> <span class="pull-left">:</span>  {{ isset($data) ? $data->tel_no : ''}} </td>
                                 </tr>
                                 <tr>
                                     <th>Mobile No.</th>
-                                    <td> xxxxx </td>
+                                    <td> <span class="pull-left">:</span>  {{ isset($data) ? $data->mobile_no : ''}} </td>
                                 </tr>
                                 <tr>
                                     <th>Highest Educational Attainment</th>
-                                    <td> xxxxx </td>
+                                    <td> <span class="pull-left">:</span>  {{ isset($data) ? $data->highest_educational_attainment : ''}} </td>
                                 </tr>
                                 <tr>
                                     <th>First Day of Service In Gov't</th>
-                                    <td> xxxxx </td>
+                                    <td> <span class="pull-left">:</span>  {{ isset($data) ? $data->first_day_of_service_in_govt : ''}} </td>
                                 </tr>
                                 <tr>
                                     <th>Casual Appointment</th>
-                                    <td> xxxxx </td>
+                                    <td> <span class="pull-left">:</span>  {{ isset($data) ? $data->casual_appointment : ''}} </td>
                                 </tr>
                                 <tr>
                                     <th>Original Appointment</th>
-                                    <td> xxxxx </td>
+                                    <td> <span class="pull-left">:</span>  {{ isset($data) ? $data->original_appointment : ''}} </td>
                                 </tr>
                                 <tr>
                                     <th>Nature of Appointment</th>
-                                    <td> xxxxx </td>
+                                    <td> <span class="pull-left">:</span>  {{ isset($data) ? $data->nature_of_appointment : ''}} </td>
                                 </tr>
                                 <tr>
                                     <th>Status type</th>
-                                    <td> xxxxx </td>
+                                    <td> <span class="pull-left">:</span>  {{ isset($data) ? $data->status_type : ''}} </td>
                                 </tr>
                             </table>
                         </div>
@@ -324,55 +324,55 @@
                                 </tr>
                                 <tr>
                                     <th>Spouse's Surname</th>
-                                    <td> xxxxx </td>
+                                    <td> <span class="pull-left">:</span>  {{ isset($data) ? $data->spouse_surname : ''}}  </td>
                                 </tr>
                                 <tr>
                                     <th>Spouse's Firstname</th>
-                                    <td> xxxxx </td>
+                                    <td> <span class="pull-left">:</span>  {{ isset($data) ? $data->spouse_firstname : ''}}  </td>
                                 </tr>
                                 <tr>
                                     <th>Spouse's Middle Name</th>
-                                    <td> xxxxx </td>
+                                    <td> <span class="pull-left">:</span>  {{ isset($data) ? $data->spouse_middlename : ''}}  </td>
                                 </tr>
                                 <tr>
                                     <th>Spouse's Occupation</th>
-                                    <td> xxxxx </td>
+                                    <td> <span class="pull-left">:</span>  {{ isset($data) ? $data->spouse_occupation : ''}}  </td>
                                 </tr>
                                 <tr>
                                     <th>Spouse's Employer/Bus. Name</th>
-                                    <td> xxxxx </td>
+                                    <td> <span class="pull-left">:</span>  {{ isset($data) ? $data->spouse_employer_bus_name : ''}}  </td>
                                 </tr>
                                 <tr>
                                     <th>Spouse's Business Address</th>
-                                    <td> xxxxx </td>
+                                    <td> <span class="pull-left">:</span>  {{ isset($data) ? $data->spouse_business_address : ''}}  </td>
                                 </tr>
                                 <tr>
                                     <th>Spouse's Telephone</th>
-                                    <td> xxxxx </td>
+                                    <td> <span class="pull-left">:</span>  {{ isset($data) ? $data->spouse_bus_telephone : ''}}  </td>
                                 </tr>
                                 <tr>
                                     <th>Father's Surname</th>
-                                    <td> xxxxx </td>
+                                    <td> <span class="pull-left">:</span>  {{ isset($data) ? $data->father_surname : ''}}  </td>
                                 </tr>
                                 <tr>
                                     <th>Father's First Name</th>
-                                    <td> xxxxx </td>
+                                    <td> <span class="pull-left">:</span>  {{ isset($data) ? $data->father_firstname : ''}}  </td>
                                 </tr>
                                 <tr>
                                     <th>Father's Middle Name</th>
-                                    <td> xxxxx </td>
+                                    <td> <span class="pull-left">:</span>  {{ isset($data) ? $data->father_middlename : ''}}  </td>
                                 </tr>
                                 <tr>
                                     <th>Mother's Maiden Surname</th>
-                                    <td> xxxxx </td>
+                                    <td> <span class="pull-left">:</span>  {{ isset($data) ? $data->mother_surname : ''}}  </td>
                                 </tr>
                                 <tr>
                                     <th>Mother's First Name</th>
-                                    <td> xxxxx </td>
+                                    <td> <span class="pull-left">:</span>  {{ isset($data) ? $data->mother_firstname : ''}}  </td>
                                 </tr>
                                 <tr>
                                     <th>Mother's Middle Name</th>
-                                    <td> xxxxx </td>
+                                    <td> <span class="pull-left">:</span>  {{ isset($data) ? $data->mother_middlename : ''}}  </td>
                                 </tr>
                             </table>
                         </div>
@@ -386,21 +386,19 @@
                                 <th>Birthday</th>
                                 <th>Age</th>
                             </tr>
-                            <tr>
-                                <td>xxxx</td>
-                                <td>xxxx</td>
-                                <td>xxxx</td>
-                            </tr>
-                            <tr>
-                                <td>xxxx</td>
-                                <td>xxxx</td>
-                                <td>xxxx</td>
-                            </tr>
-                            <tr>
-                                <td>xxxx</td>
-                                <td>xxxx</td>
-                                <td>xxxx</td>
-                            </tr>
+                            <?php if ($data->children == null): ?>
+                                <i>No Children</i>
+                            <?php else: ?>
+                                <?php foreach (json_decode($data->children) as $item): ?>
+                                    <tr>
+                                        <td>{{ $item->name }}</td>
+                                        <td>{{ $item->dob }}</td>
+                                        <td>{{ $item->age }}</td>
+                                    </tr>
+                                <?php endforeach ?>
+
+                            <?php endif ?>
+                            
                         </table>
                         
                     </div>
