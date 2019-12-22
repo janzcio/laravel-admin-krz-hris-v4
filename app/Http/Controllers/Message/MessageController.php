@@ -10,6 +10,8 @@ use App\Profile;
 use App\jobhiring;
 use Illuminate\Http\Request;
 
+use Auth;
+
 class MessageController extends Controller
 {
     /**
@@ -23,9 +25,9 @@ class MessageController extends Controller
         $perPage = 25;
         $user_id = \Auth::user()->id;
         if (!empty($keyword)) {
-            $message = Message::find($user_id)->where('jh_id', 'LIKE', "%$keyword%")
-                ->orWhere('user_id', 'LIKE', $user_id)
+            $message = Message::where('jh_id', 'LIKE', $keyword)
                 ->orWhere('message', 'LIKE', "%$keyword%")
+                ->where('user_id', 'LIKE', $user_id)
                 ->paginate($perPage);
         } else {
             $message = Message::where('user_id', 'LIKE', $user_id)->paginate($perPage);
