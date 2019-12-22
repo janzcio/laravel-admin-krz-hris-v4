@@ -161,5 +161,17 @@ class HomeController extends Controller
         // }
     }
 
+    public function notifications(){
+         /*all*/
+         $new_applicants = Applicant::where('is_read', 0)->get()->count();
+         if ($new_applicants > 0) {
+             $latest_applicants = Applicant::orderBy('created_at','desc')->first();;
+         }
+
+         /*bywave admin user*/
+         return view('ajax.notifications', compact('new_applicants','latest_applicants'));
+         // return ;
+    }
+
 
 }

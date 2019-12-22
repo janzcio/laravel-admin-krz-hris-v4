@@ -77,14 +77,28 @@
                                             <tbody>
                                             @foreach($jobhirings as $item)
                                                 <tr>
-                                                    <td>{{ $loop->iteration or $item->id }}</td>
+                                                    <td>{{ $item->id }}</td>
                                                     <td>{{ $item->title }}</td><td>{{ $item->description }}</td><td>{{ $item->requirements }}</td>
                                                     <td>
                                                         <a href="{{ url('/admin/jobhirings/' . $item->id) }}" title="View jobhiring">
                                                             <button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button>
                                                         </a>
                                                         <a href="{{ url('/admin/jobhirings/' . $item->id . '/applicants') }}" title="View Applicants">
-                                                            <button class="btn btn-info btn-sm"><i class="fa fa-users" aria-hidden="true"></i> View Applicants</button>
+                                                            <button class="btn btn-info btn-sm">
+                                                                <i class="fa fa-users" aria-hidden="true"></i> View Applicants
+                                                                <?php 
+                                                                    $count_by_jh = 0;
+                                                                    if (isset(array_count_values(array_column($data_new_applicants, 'jobhiring_id'))[$item->id])) {
+                                                                        $count_by_jh = array_count_values(array_column($data_new_applicants, 'jobhiring_id'))[$item->id]; 
+                                                                    }
+                                                                ?>
+                                                                <?php if ($count_by_jh != 0): ?>
+                                                                    <span class="label label-danger swing animated infinite">
+                                                                           {{$count_by_jh}} 
+                                                                    </span>
+                                                                <?php endif ?>
+                                                            </button>
+
                                                         </a>
                                                         <a href="{{ url('/admin/jobhirings/' . $item->id . '/edit') }}" title="Edit jobhiring"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
                                                         {!! Form::open([

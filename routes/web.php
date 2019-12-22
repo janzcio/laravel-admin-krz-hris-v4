@@ -17,10 +17,12 @@ Route::get('/apply/{id}', 'HomeController@apply');
 Route::get('/js/register', 'HomeController@jsRegister');
 Route::post('/js/store', 'HomeController@jsStore');
 Route::get('/messages', 'Message\MessageController@index');
+Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/notifications', 'HomeController@notifications');
 
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+
 
 /*View Profile*/
 Route::get('/profile', 'Admin\UsersController@profile')->name('home');

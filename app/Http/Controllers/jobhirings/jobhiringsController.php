@@ -43,7 +43,22 @@ class jobhiringsController extends Controller
             $jobhirings = jobhiring::paginate($perPage);
         }
 
-        return view('admin.jobhirings.index', compact('jobhirings'));
+        $jobhirings = jobhiring::paginate(25);
+
+        $new_applicants = Applicant::where('is_read', 0)->get();
+
+        /*count new applicants by jobhiring*/
+        $data_new_applicants = [];
+
+        foreach ($new_applicants as $value) {
+            $data_new_applicants[] = $value;
+        }
+
+        /*count array values */
+        // print_r(array_count_values(array_column($data_new_applicants, 'jobhiring_id'))[5]);
+        // die();
+
+        return view('admin.jobhirings.index', compact('jobhirings','data_new_applicants'));
     }
 
     /**
@@ -142,7 +157,10 @@ class jobhiringsController extends Controller
         $p = $Profile->getProfileByuserId();
         $message = Message::getAllMessagesByUIDJHID();
 
-        
+        /*read notification and update to 1*/
+        $read_notification = Applicant::where('jobhiring_id', $jhid)
+                                      ->update(['is_read' => 1]);
+                                        
 
         return view('admin.jobhirings.applicants', compact('applicants','jh','p','message','jhid'));
     }

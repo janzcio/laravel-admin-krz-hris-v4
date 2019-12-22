@@ -11,7 +11,7 @@ class Applicant extends Model
      *
      * @var array
      */
-    protected $fillable = ['user_id', 'jobhiring_id','status'];
+    protected $fillable = ['user_id', 'jobhiring_id','status','is_read'];
 
 
     // protected $hidden = [

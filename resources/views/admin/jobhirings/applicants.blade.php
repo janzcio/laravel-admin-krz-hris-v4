@@ -62,7 +62,7 @@
                                     <br/>
 
                                     <div class="table-responsive">
-                                        <a href="/admin/jobhirings" class="btn btn-primary"><i class="fa fa-arrow-left"></i>Back</a>
+                                        <a href="/admin/jobhirings" class="btn btn-primary"><i class="fa fa-arrow-left"></i> Back</a>
                                         <br><br>
                                         <table class="table table-hover" id="table-applicants">
                                             <thead>
@@ -112,7 +112,6 @@
 
     <script type="text/javascript">
         $(document).ready(function(){
-            console.log('asdasdasd');
             $('#table-applicants').DataTable({
                 pageLength: 25,
                 responsive: true,
