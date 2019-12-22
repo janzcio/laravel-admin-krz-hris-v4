@@ -25,7 +25,7 @@
 
 @section('content')
             <div class="row">
-                <div class="col-lg-7">
+                <div class="col-lg-12">
                     <div class="ibox ">
                         <div class="ibox-title">
                             <h5>Messages<small>Short Description of the header</small></h5>
@@ -80,7 +80,7 @@
                                             </thead>
                                             <tbody>
                                             @foreach($message as $item)
-                                                <tr>
+                                                <tr style="font-weight: {{ $item->is_read == 0 ? 800 : 300 }};">
                                                     <td>{{ $loop->iteration or $item->id }}</td>
                                                     <td><a href="/view/jobpost/{{$item->jh_id}}">{{ $jh[$item->jh_id]->title }}</a></td>
                                                     <?php $fullname = $p[$item->user_id]->firstname . " " . $p[$item->user_id]->surname; ?>

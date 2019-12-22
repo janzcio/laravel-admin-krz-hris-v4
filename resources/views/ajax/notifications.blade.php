@@ -1,30 +1,47 @@
 <ul class="nav navbar-top-links navbar-right">
     <!-- notifications -->
-    <li class="dropdown">
-        <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
-            <i class="fa fa-envelope"></i>  <span class="label label-warning">16</span>
-        </a>
-        <ul class="dropdown-menu dropdown-messages">
-            <li>
-                <div class="dropdown-messages-box">
-                    <a class="dropdown-item float-left" href="profile.html">
-                        <img alt="image" class="rounded-circle" src="{{ asset('inspinia_admin-v2.9.2/img/a7.jpg') }}">
-                    </a>
-                    <div class="media-body">
-                        <small class="float-right">46h ago</small>
-                        <strong>Mike Loreipsum</strong> started following <strong>Monica Smith</strong>. <br>
-                        <small class="text-muted">3 days ago at 7:58 pm - 10.06.2014</small>
-                    </div>
-                </div>
-            </li>
-            <!-- <li class="dropdown-divider"></li> -->
-        </ul>
-    </li>
+    <?php if (count($new_message) > 0): ?>
+        <li class="dropdown">
+            <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                <i class="fa fa-envelope"></i>  <span class="label label-danger swing animated infinite">{{ count($new_message) }}</span>
+            </a>
+            <ul class="dropdown-menu dropdown-messages">
+                <?php foreach ($new_message as $item): ?>
+                    <li>
+                        <div class="dropdown-messages-box">
+                            <a class="dropdown-item float-left" href="profile.html">
+                                <i class="fa fa-book"></i>
+                            </a>
+                            <div class="media-body">
+                                <a href="/admin/message/{{ $item->id }}" class="dropdown-item">
+                                    Message from 
+                                    <strong>{{ $jobhirings[$item->jh_id]->title }}</strong> Sent by<strong> {{ $users[$item->sent_by] }}</strong>. <br>
+                                    <small class="text-muted moment-label"> {{$item->created_at}} </small>
+                                </a>
+                            </div>
+                        </div>
+                    </li>
+                    <li class="dropdown-divider"></li>
+                <?php endforeach ?>
+                
+            </ul>
+        </li>
+    <?php else: ?>
+        <li class="dropdown">
+            <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                <i class="fa fa-envelope"></i> 
+            </a>
+            <ul class="dropdown-menu dropdown-messages">
+                <i>No message yet</i>
+            </ul>
+        </li>
+    <?php endif ?>
+    
     <?php if ($new_applicants > 0): ?>
         <li class="dropdown">
             <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
                 <i class="fa fa-bell"></i>  
-                <span class="label label-primary count-notif swing animated infinite">{{ $new_applicants }}</span>
+                <span class="label label-danger count-notif swing animated infinite">{{ $new_applicants }}</span>
             </a>
             <ul class="dropdown-menu dropdown-alerts">
                 <li class="count-notif">
@@ -35,7 +52,16 @@
                         </div>
                     </a>
                 </li>
-                <!-- <li class="dropdown-divider"></li> -->
+                <li class="dropdown-divider"></li>
+            </ul>
+        </li>
+    <?php else: ?>
+        <li class="dropdown">
+            <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                <i class="fa fa-bell"></i>  
+            </a>
+            <ul class="dropdown-menu dropdown-alerts">
+                <i>No notifications yet</i>
             </ul>
         </li>
     <?php endif ?>

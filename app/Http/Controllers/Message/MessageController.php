@@ -71,13 +71,15 @@ class MessageController extends Controller
 		// 	'jh_id' => 'required',
 		// 	'user_id' => 'required'
 		// ]);
+        // $jhid = $_GET['jhid'];
+
         $user_id = \Auth::user()->id;
         $requestData = $request->all();
-        
         $requestData["sent_by"] = $user_id;
+        $jh_id = $requestData['jh_id'];
         Message::create($requestData);
 
-        return redirect('/admin/jobhirings')->with('message', 'Message Sent!');
+        return redirect('/admin/jobhirings/'.$jh_id.'/applicants')->with('message', 'Message Sent!');
     }
 
     /**
@@ -90,6 +92,10 @@ class MessageController extends Controller
     public function show($id)
     {
         $message = Message::findOrFail($id);
+
+        $read_notification = Message::where('id', $id)
+                          ->update(['is_read' => 1]);
+
 
         return view('admin.message.show', compact('message'));
     }

@@ -27,7 +27,7 @@ class Message extends Model
      *
      * @var array
      */
-    protected $fillable = ['jh_id', 'user_id', 'message', 'sent_by'];
+    protected $fillable = ['jh_id', 'user_id', 'message', 'sent_by','is_read'];
 
     public static function getAllMessagesByUIDJHID(){
         $data = [];

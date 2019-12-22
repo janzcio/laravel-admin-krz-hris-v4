@@ -19,7 +19,7 @@ class CreateApplicantsTable extends Migration
             $table->increments('id');
             $table->integer('user_id');     
             $table->integer('jobhiring_id');
-            $table->integer('is_read');
+            $table->integer('is_read')->default(0);
             $table->integer('status')->default(0)->comment = '0 = pending, 1 = approved, 2 = for interview , 3 = declined';
             $table->timestamps();
             $table->softDeletes();

@@ -85,7 +85,7 @@
                                                             <td class="text-center">
                                                                 <a href="/profile?uid={{$item->user_id}}" class="btn btn-primary btn-xs"><i class="fa fa-eye"></i> View Profile</a>
                                                                 <?php if (isset($message[$item->user_id][$item->jobhiring_id])): ?>
-                                                                    <button disabled="disabled" class="btn btn-w-m btn-info btn-xs" title="Date Send: {{$message[$item->user_id][$item->jobhiring_id]->created_at}}"><i class="fa fa-check"></i> Message Send</button>
+                                                                    <button disabled="disabled" class="btn btn-w-m btn-info btn-xs" title="Date Send: {{$message[$item->user_id][$item->jobhiring_id]->created_at}}"><i class="fa fa-check"></i> Message Sent</button>
                                                                 <?php else: ?>
                                                                     <a href="/admin/message/create?uid={{$item->user_id}}&&jhid={{$item->jobhiring_id}}" class="btn btn-warning btn-xs"><i class="fa fa-paper-plane"></i> Send a message</a>
                                                                 <?php endif ?>
@@ -112,6 +112,16 @@
 
     <script type="text/javascript">
         $(document).ready(function(){
+            @if(\Session::has('message'))
+            toastr.options = {
+                    closeButton: true,
+                    progressBar: true,
+                    showMethod: 'slideDown',
+                    timeOut: 4000
+                };
+            toastr.success('Success!', '{{session()->get('message')}}');
+            @endif
+
             $('#table-applicants').DataTable({
                 pageLength: 25,
                 responsive: true,

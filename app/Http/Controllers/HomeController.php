@@ -8,6 +8,7 @@ use App\jobhiring;
 use App\user;
 use App\Role;
 use App\Profile;
+use App\Message;
 use App\Applicant;
 use Carbon\Carbon;
 
@@ -162,14 +163,22 @@ class HomeController extends Controller
     }
 
     public function notifications(){
+        $jobhirings = jobhiring::getAllJH();
+        $users = user::getUserByID();
+
          /*all*/
          $new_applicants = Applicant::where('is_read', 0)->get()->count();
          if ($new_applicants > 0) {
-             $latest_applicants = Applicant::orderBy('created_at','desc')->first();;
+             $latest_applicants = Applicant::orderBy('created_at','desc')->first();
          }
 
+         /*messages*/
+         $new_message = Message::where('is_read', 0)
+                        ->where('user_id', \Auth::user()->id)
+                        ->get();
+        
          /*bywave admin user*/
-         return view('ajax.notifications', compact('new_applicants','latest_applicants'));
+         return view('ajax.notifications', compact('new_applicants','latest_applicants','new_message','jobhirings','users'));
          // return ;
     }
 

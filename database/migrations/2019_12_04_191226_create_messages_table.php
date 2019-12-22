@@ -20,6 +20,7 @@ class CreateMessagesTable extends Migration
             $table->integer('user_id')->nullable();
             $table->text('message')->nullable();
             $table->integer('sent_by')->nullable();
+            $table->integer('is_read')->default(0);
             });
     }
 
