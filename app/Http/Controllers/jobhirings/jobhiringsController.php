@@ -85,7 +85,7 @@ class jobhiringsController extends Controller
         
         jobhiring::create($requestData);
 
-        return redirect('admin/jobhirings')->with('flash_message', 'jobhiring added!');
+        return redirect('admin/jobhirings')->with('message', 'jobhiring added!');
     }
 
     /**
@@ -132,7 +132,7 @@ class jobhiringsController extends Controller
         $jobhiring = jobhiring::findOrFail($id);
         $jobhiring->update($requestData);
 
-        return redirect('admin/jobhirings')->with('flash_message', 'jobhiring updated!');
+        return redirect('admin/jobhirings')->with('message', 'jobhiring updated!');
     }
 
     /**
@@ -146,7 +146,7 @@ class jobhiringsController extends Controller
     {
         jobhiring::destroy($id);
 
-        return redirect('admin/jobhirings')->with('flash_message', 'jobhiring deleted!');
+        return redirect('admin/jobhirings')->with('message', 'jobhiring deleted!');
     }
 
     public function showApplicants($jhid)

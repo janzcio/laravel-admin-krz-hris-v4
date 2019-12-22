@@ -1,7 +1,18 @@
 
 
 
-@if(Auth::user() !== null && Auth::user()->roles->pluck('name')[0] !== 'Admin')
+@if(Auth::user() !== null && Auth::user()->roles->pluck('name')[0] === 'jobseeker')
+    <li class="">
+        <a href="/"><i class="fa fa-home"></i> <span class="nav-label">Home</span></a>
+    </li>
+    <li class="{{ $currentModule == 'profile' ? 'active' : '' }}">
+        <a href="/profile"><i class="fa fa-book"></i> <span class="nav-label">Profile</span></a>
+    </li>
+    <li class="{{ $currentModule == 'messages' ? 'active' : '' }}">
+        <a href="/messages"><i class="fa fa-book"></i> <span class="nav-label">Messages</span></a>
+    </li>
+
+@elseif(Auth::user() !== null && Auth::user()->roles->pluck('name')[0] === 'User')
     <li class="">
         <a href="/"><i class="fa fa-home"></i> <span class="nav-label">Home</span></a>
     </li>

@@ -49,7 +49,7 @@
 </div><div class="form-group {{ $errors->has('position') ? 'has-error' : ''}}">
     {!! Form::label('position', 'Position', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
-        {!! Form::number('position', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
+        {!! Form::textarea('position', null, ('' == 'required') ? ['class' => 'form-control', 'required' => 'required'] : ['class' => 'form-control']) !!}
         {!! $errors->first('position', '<p class="help-block">:message</p>') !!}
     </div>
 </div><div class="form-group {{ $errors->has('skill_requirement') ? 'has-error' : ''}}">
@@ -80,10 +80,10 @@
     {!! Form::label('is_active', 'Is Active', ['class' => 'col-md-4 control-label']) !!}
     <div class="col-md-6">
         <div class="checkbox">
-    <label>{!! Form::radio('%1$s', '1') !!} Yes</label>
+    <label>{!! Form::radio('is_active', '1') !!} Yes</label>
 </div>
 <div class="checkbox">
-    <label>{!! Form::radio('%1$s', '0', true) !!} No</label>
+    <label>{!! Form::radio('is_active', '0', true) !!} No</label>
 </div>
         {!! $errors->first('is_active', '<p class="help-block">:message</p>') !!}
     </div>

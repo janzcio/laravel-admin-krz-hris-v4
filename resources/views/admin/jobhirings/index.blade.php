@@ -133,15 +133,15 @@
 
 @section('js-extend')
 <script src="{{ asset('inspinia_admin-v2.9.2/js/plugins/toastr/toastr.min.js') }}"></script>
-    <script type="text/javascript">
-         @if(\Session::has('message'))
-            toastr.options = {
-                    closeButton: true,
-                    progressBar: true,
-                    showMethod: 'slideDown',
-                    timeOut: 4000
-                };
-            toastr.success('Success!', '{{session()->get('message')}}');
-            @endif
-    </script>
+<script type="text/javascript">
+     @if(\Session::has('message'))
+        toastr.options = {
+                closeButton: true,
+                progressBar: true,
+                showMethod: 'slideDown',
+                timeOut: 4000
+            };
+        toastr.success('Success!', '{{session()->get('message')}}');
+        @endif
+</script>
 @endsection

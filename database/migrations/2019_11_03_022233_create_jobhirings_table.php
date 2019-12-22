@@ -24,12 +24,12 @@ class CreateJobhiringsTable extends Migration
             $table->text('location')->nullable();
             $table->text('how_to_apply')->nullable();
             $table->integer('slot')->nullable();
-            $table->integer('position')->nullable();
+            $table->text('position')->nullable();
             $table->text('skill_requirement')->nullable();
             $table->date('available_from')->nullable();
             $table->date('available_to')->nullable();
             $table->string('email_address')->nullable();
-            $table->boolean('is_active')->nullable();
+            $table->boolean('is_active')->nullable()->default(1);
             $table->integer('user_id')->nullable();
             });
     }
