@@ -89,6 +89,10 @@
                                                                 <?php else: ?>
                                                                     <a href="/admin/message/create?uid={{$item->user_id}}&&jhid={{$item->jobhiring_id}}" class="btn btn-warning btn-xs"><i class="fa fa-paper-plane"></i> Send a message</a>
                                                                 <?php endif ?>
+                                                                <a href="#" title="Request for profile update">
+                                                                    <button class="btn btn-warning btn-xs"><i class="fa fa-pencil" aria-hidden="true"></i> Request for profile update
+                                                                    </button>
+                                                                </a>
                                                             </td>
                                                         </tr>
                                                     @endif

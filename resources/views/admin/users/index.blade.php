@@ -1,13 +1,13 @@
 @extends('layouts.backend')
 
 @section('content')
-    <div class="container">
-        <div class="row">
+    <div class="">
+        <div class="">
             @section('left-sidebar')
                     @include ('layouts.lsidebar',["currentModule" => "users"])
             @endsection
 
-            <div class="col-md-9">
+            <div class="col-md-12">
                 <div class="card">
                     <div class="card-header">Users</div>
                     <div class="card-body">
@@ -74,6 +74,10 @@
                                                         'onclick'=>'return confirm("Confirm delete?")'
                                                 )) !!}
                                             {!! Form::close() !!}
+                                            <a href="#" title="Request for profile update">
+                                                <button class="btn btn-warning btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i> Request for profile update
+                                                </button>
+                                            </a>
                                         </td>
                                     </tr>
                                 @endforeach
