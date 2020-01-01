@@ -32,7 +32,7 @@
                     if (Auth::user() !== null) {
                         $rolename = Auth::user()->roles->pluck('name')[0]; 
                         if ($rolename !== "jobseeker") {
-                            $redirect = '/home';
+                            $redirect = '/dashboard';
                         }else{
                             $redirect = '/profile';
                         }
@@ -147,14 +147,7 @@
                             </div>
                             <div class="col-md-2 text-right">
                                 <span class="small font-bold"></span><br/>
-                                <?php $jhid = $j->id; ?>
-                                <!-- isset($applicants[Auth::user()->id][$j->id]) -->
-                                <?php if (Auth::user() !== null && isset($applicants[Auth::user()->id][$j->id])): ?>
-                                    <button class="ladda-button btn btn-warning" disabled="">Applied</button>
-                                    
-                                <?php else: ?>
-                                    <a href="/apply/{{ $j->id }}" class="ladda-button btn btn-warning" data-style="zoom-in" title="Apply here" disabled><i class="fa fa-send-o"></i> Apply</a>
-                                <?php endif ?>
+                                <a href=" /js/view?jhid={{ $j->id }}" class="ladda-button btn btn-warning" data-style="zoom-in" title="Read more" disabled> Read more</a>
                             </div>
                         </div>
                         <div class="row">

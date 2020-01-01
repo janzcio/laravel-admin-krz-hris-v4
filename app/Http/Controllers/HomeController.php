@@ -79,6 +79,20 @@ class HomeController extends Controller
         return view('auth.register', compact('roles','jhid'));
     }
 
+    public function jsView()
+    {
+        $jhid = isset($_GET["jhid"]) ? $_GET["jhid"] : 0;
+        $applicants = Applicant::getAllapplicantByids();
+        $jobhiring = jobhiring::findOrFail($jhid);
+        $jobhiring->requirements = "shiiit minds";
+        $jobhiring->requirements = explode("*", $jobhiring->requirements);
+        $jobhiring->responsibilities = explode("*", $jobhiring->responsibilities);
+        $jobhiring->others = explode("*", $jobhiring->others);
+        $jobhiring->how_to_apply = explode("*", $jobhiring->how_to_apply);
+        $jobhiring->location = explode("*", $jobhiring->location);
+        return view('pages.view-jobhiring', compact('jhid','applicants','jobhiring'));
+    }
+
     public function jsStore(Request $request)
     {
         $success = false;
@@ -142,24 +156,6 @@ class HomeController extends Controller
 
             return redirect('/')->with('message', $message);
         }
-
-        
-
-        // return redirect('/home')->with('message', 'User has been added');
-
-        // if ($user) {
-        //     $success = true;
-        //     /*saving profile of jobseekers*/
-        //     $profiledata = (array)$requestData;
-        //     $profiledata['user_id'] = (int)$user->id;
-            
-            
-        // }
-      
-
-        // if ($success) {
-        //     return redirect('/login');
-        // }
     }
 
     public function notifications(){

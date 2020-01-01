@@ -12,12 +12,14 @@
 */
 
 Route::get('/', 'HomeController@welcome')->name('welcome');
+Route::get('/home', 'HomeController@welcome')->name('home');
 Route::get('/welcome', 'HomeController@welcome');
 Route::get('/apply/{id}', 'HomeController@apply');
 Route::get('/js/register', 'HomeController@jsRegister');
+Route::get('/js/view', 'HomeController@jsView');
 Route::post('/js/store', 'HomeController@jsStore');
 Route::get('/messages', 'Message\MessageController@index');
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/dashboard', 'HomeController@index')->name('dashboard');
 Route::get('/notifications', 'HomeController@notifications');
 
 Auth::routes();

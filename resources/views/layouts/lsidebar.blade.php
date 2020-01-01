@@ -27,7 +27,7 @@
         <a href="/"><i class="fa fa-home"></i> <span class="nav-label">Home</span></a>
     </li>
     <li class="{{ $currentModule == 'dashboard' ? 'active' : '' }}">
-        <a href="/home"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span></a>
+        <a href="/dashboard"><i class="fa fa-th-large"></i> <span class="nav-label">Dashboards</span></a>
     </li>
 
     <li class="{{ $currentModule == 'jobhirings' ? 'active' : '' }}">
