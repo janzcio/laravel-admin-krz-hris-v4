@@ -33,6 +33,9 @@ Route::get('admin', 'Admin\AdminController@index');
 Route::resource('admin/roles', 'Admin\RolesController');
 Route::resource('admin/permissions', 'Admin\PermissionsController');
 Route::resource('admin/users', 'Admin\UsersController');
+Route::get('/admin/jobseekers', 'Admin\UsersController@jobseekers');
+Route::get('/admin/rfu/{usertype}/{uid}', 'Admin\UsersController@rfu');
+
 Route::get('admin/generator', ['uses' => '\Appzcoder\LaravelAdmin\Controllers\ProcessController@getGenerator']);
 Route::post('admin/generator', ['uses' => '\Appzcoder\LaravelAdmin\Controllers\ProcessController@postGenerator']);
 

@@ -7,6 +7,8 @@ use App\Role;
 use App\User;
 use App\Profile;
 
+use DB;
+
 use Illuminate\Http\Request;
 
 class UsersController extends Controller
@@ -18,17 +20,75 @@ class UsersController extends Controller
      */
     public function index(Request $request)
     {
+        $p = new Profile();
         $keyword = $request->get('search');
         $perPage = 15;
-
+        $profile = $p->getProfileByuserId();
         if (!empty($keyword)) {
-            $users = User::where('name', 'LIKE', "%$keyword%")->orWhere('email', 'LIKE', "%$keyword%")
+           $users = DB::table('users')
+                ->join('role_user', 'users.id', '=', 'role_user.user_id')
+                ->join('roles', 'role_user.role_id', '=', 'roles.id')
+                ->where('name', 'LIKE', "%$keyword%")
+                ->orWhere('email', 'LIKE', "%$keyword%")
+                ->where('roles.name', 'LIKE', "User")
                 ->paginate($perPage);
         } else {
-            $users = User::paginate($perPage);
+            $users = DB::table('users')
+                ->select('users.*')
+                ->join('role_user', 'users.id', '=', 'role_user.user_id')
+                ->join('roles', 'role_user.role_id', '=', 'roles.id')
+                ->where('roles.name', 'LIKE', "User")
+                ->paginate($perPage);
         }
 
-        return view('admin.users.index', compact('users'));
+        return view('admin.users.index', compact('users','profile'));
+    }
+
+    public function jobseekers(Request $request)
+    {
+        $role = new Role();
+        $p = new Profile();
+        $keyword = $request->get('search');
+        $perPage = 15;
+        $arrRole = $role->getRoleListByName();
+        $profile = $p->getProfileByuserId();
+        if (!empty($keyword)) {
+            $users = DB::table('users')
+                ->join('role_user', 'users.id', '=', 'role_user.user_id')
+                ->join('roles', 'role_user.role_id', '=', 'roles.id')
+                ->where('name', 'LIKE', "%$keyword%")
+                ->orWhere('email', 'LIKE', "%$keyword%")
+                ->where('roles.name', 'LIKE', "jobseeker")
+                ->paginate($perPage);
+        } else {
+            // $users = User::paginate($perPage);
+            $users = DB::table('users')
+                ->select('users.*')
+                ->join('role_user', 'users.id', '=', 'role_user.user_id')
+                ->join('roles', 'role_user.role_id', '=', 'roles.id')
+                ->join('profiles', 'users.id', '=', 'profiles.user_id')
+                ->where('roles.name', 'LIKE', "jobseeker")
+                ->paginate($perPage);
+        }
+
+        return view('admin.users.jobseekers', compact('users', 'arrRole','profile'));
+    }
+
+    function rfu(Request $request){
+        $uid = isset($request['uid']) ? $request['uid'] : 0;
+        $usertype = $request['usertype'];
+        if ($uid != 0) {
+            $read_notification = Profile::where('user_id', $uid)
+                          ->update(['rfu' => true]);
+            $message = "jobhiring updated!";
+        }else{
+            $message = "No User was selected";
+        }
+        
+
+        
+
+        return redirect('/admin/'.$usertype)->with('message', $message);
     }
 
     /**
@@ -186,6 +246,9 @@ class UsersController extends Controller
     }
 
     public function profile(){
+        $isUpdate = (isset($_GET['edit']) && $_GET['edit'] == 1) ? 1 : 0;
+        $isNew = isset($_GET['new']) ? 1 : 0;
+
         $user_id = null;
         $role = \Auth::user()->roles->pluck('name')[0];
         if (isset($_GET["uid"])) {
@@ -194,6 +257,6 @@ class UsersController extends Controller
            $user_id =  \Auth::user()->id;
         }
         $data = Profile::where('user_id', $user_id)->first();
-        return view('admin.profile.index', compact('data','role'));
+        return view('admin.profile.index', compact('data','role','isUpdate'));
     }
 }

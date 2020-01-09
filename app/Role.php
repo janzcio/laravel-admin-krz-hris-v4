@@ -34,4 +34,13 @@ class Role extends Model
     {
         return $this->permissions()->save($permission);
     }
+
+    public function getRoleListByName(){
+        $data = [];
+        $role = self::get();
+        foreach ($role as $key => $value) {
+            $data[$value->id] = $value->name;
+        }
+        return $data;
+    }
 }

@@ -100,6 +100,8 @@ class CreateProfilesTable extends Migration
             $table->text('oi')->nullable();
 
             $table->text('reference')->nullable();
+
+            $table->boolean('rfu')->nullable()->default(0)->comment = 'request for update';
             $table->timestamps();
             $table->softDeletes();
         });

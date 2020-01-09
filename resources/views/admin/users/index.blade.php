@@ -1,5 +1,11 @@
 @extends('layouts.backend')
 
+
+@section('css-extend')
+<!-- Toastr style -->
+    <link href="{{ asset('inspinia_admin-v2.9.2/css/plugins/toastr/toastr.min.css') }}" rel="stylesheet">
+@endsection
+
 @section('content')
     <div class="">
         <div class="">
@@ -75,8 +81,8 @@
                                                         'onclick'=>'return confirm("Confirm delete?")'
                                                 )) !!}
                                             {!! Form::close() !!}
-                                            <a href="#" title="Request for profile update">
-                                                <button class="btn btn-warning btn-sm"><i class="fa fa-pencil" aria-hidden="true"></i> Request for profile update
+                                            <a href="{{ url('/admin/rfu/users/' . $item->id) }}" title="Request for profile update">
+                                                <button class="btn btn-warning btn-sm"><i class="fa fa-paper-plane" aria-hidden="true"></i> Request for profile update
                                                 </button>
                                             </a>
                                         </td>
@@ -95,3 +101,19 @@
         </div>
     </div>
 @endsection
+
+@section('js-extend')
+<script src="{{ asset('inspinia_admin-v2.9.2/js/plugins/toastr/toastr.min.js') }}"></script>
+    <script type="text/javascript">
+         @if(\Session::has('message'))
+            toastr.options = {
+                    closeButton: true,
+                    progressBar: true,
+                    showMethod: 'slideDown',
+                    timeOut: 4000
+                };
+            toastr.success('Success!', '{{session()->get('message')}}');
+            @endif
+    </script>
+@endsection
+

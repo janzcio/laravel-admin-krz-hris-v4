@@ -172,9 +172,14 @@ class HomeController extends Controller
          $new_message = Message::where('is_read', 0)
                         ->where('user_id', \Auth::user()->id)
                         ->get();
+
+        /*rfu*/
+        $rfu = Profile::where('rfu', 1)
+                        ->where('user_id', \Auth::user()->id)
+                        ->count();
         
          /*bywave admin user*/
-         return view('ajax.notifications', compact('new_applicants','latest_applicants','new_message','jobhirings','users'));
+         return view('ajax.notifications', compact('new_applicants','latest_applicants','new_message','jobhirings','users','rfu'));
          // return ;
     }
 

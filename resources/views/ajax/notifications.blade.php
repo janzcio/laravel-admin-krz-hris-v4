@@ -66,6 +66,36 @@
                 </ul>
             </li>
         <?php endif ?>
+
+    <?php else: ?>
+        <?php if ($rfu > 0): ?>
+            <li class="dropdown">
+                <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                    <i class="fa fa-bell"></i>  
+                    <span class="label label-danger count-notif swing animated infinite">{{ $rfu }}</span>
+                </a>
+                <ul class="dropdown-menu dropdown-alerts">
+                    <li class="count-notif">
+                        <a href="/admin/jobhirings" class="dropdown-item">
+                            <div>
+                                <i class="fa {{ $new_applicants == 1 ? 'fa-user' : 'fa-users' }} fa-fw"></i> Please update you profile
+                                <span class="float-right text-muted small moment-label"><!-- {{ $latest_applicants->created_at }} --></span>
+                            </div>
+                        </a>
+                    </li>
+                    <li class="dropdown-divider"></li>
+                </ul>
+            </li>
+        <?php else: ?>
+            <li class="dropdown">
+                <a class="dropdown-toggle count-info" data-toggle="dropdown" href="#">
+                    <i class="fa fa-bell"></i>  
+                </a>
+                <ul class="dropdown-menu dropdown-alerts">
+                    <i>No notifications yet</i>
+                </ul>
+            </li>
+        <?php endif ?>
     <?php endif ?>
     
     <!-- notifications -->
