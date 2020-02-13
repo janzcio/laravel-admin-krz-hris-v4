@@ -52,9 +52,9 @@
                                             <td>{{ $item->name }}</td>
                                             <td>{{ $item->email }}</td>
                                             <td>
-                                                <a href="{{ url('/admin/users/' . $item->id) }}" title="View User"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a> |
-                                                <a href="/profile?uid={{$item->id}}" class="btn btn-info btn-xs"><i class="fa fa-eye"></i> Profile</a> |
-                                                <a href="{{ url('/admin/users/' . $item->id . '/edit') }}" title="Edit User"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a> |
+                                                <a href="{{ url('/admin/users/' . $item->id) }}" title="View User"><button class="btn btn-info btn-sm"><i class="fa fa-eye" aria-hidden="true"></i> View</button></a>
+                                                <a href="/profile?uid={{$item->id}}" class="btn btn-info btn-sm"><i class="fa fa-eye"></i> Profile</a>
+                                                <a href="{{ url('/admin/users/' . $item->id . '/edit') }}" title="Edit User"><button class="btn btn-primary btn-sm"><i class="fa fa-pencil-square-o" aria-hidden="true"></i> Edit</button></a>
                                                 {!! Form::open([
                                                     'method' => 'DELETE',
                                                     'url' => ['/admin/users', $item->id],
@@ -67,15 +67,18 @@
                                                             'onclick'=>'return confirm("Confirm delete?")'
                                                     )) !!}
                                                 {!! Form::close() !!}
+                                                @can('can-request-for-update')
                                                 <?php if ($profile[$item->id]->rfu != 1): ?>
-                                                    <a href="{{ url('/admin/rfu/jobseekers/' . $item->id) }}" title="Request for profile update">
-                                                        <button class="btn btn-warning btn-sm"><i class="fa fa-paper-plane" aria-hidden="true"></i> Request for profile update
-                                                        </button>
-                                                    </a>
+                                                    
+                                                        <a href="{{ url('/admin/rfu/jobseekers/' . $item->id) }}" title="Request for profile update">
+                                                            <button class="btn btn-warning btn-sm"><i class="fa fa-paper-plane" aria-hidden="true"></i> Request for profile update
+                                                            </button>
+                                                        </a>
                                                 <?php else: ?>
                                                     <button disabled class="btn btn-warning btn-sm"><i class="fa fa-paper-plane" aria-hidden="true"></i> Request for profile update sent
                                                         </button>
                                                 <?php endif ?>
+                                                @endcan
                                             </td>
                                         </tr>
                                     @endif

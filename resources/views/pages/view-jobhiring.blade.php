@@ -104,7 +104,10 @@
                             <p><small><i>2019-12-28 10:16:12</i></small></p>
                             
                         <?php else: ?>
-                            <a href="/apply/{{ $jhid }}" class="ladda-button btn btn-warning" data-style="zoom-in" title="Apply here" disabled><i class="fa fa-send-o"></i> Apply Now! </a>
+                            
+                                <a href="/apply/{{ $jhid }}" class="ladda-button btn btn-warning" data-style="zoom-in" title="Apply here" disabled><i class="fa fa-send-o"></i> Apply Now!</a>
+                            
+                            
                         <?php endif ?>
                     	 
 

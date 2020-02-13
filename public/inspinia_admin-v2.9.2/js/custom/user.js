@@ -242,6 +242,7 @@ $( "#user-form" ).submit(function( event ) {
       success: function (res) {
           if (res.success) {
               toastr.success('New User Added!', 'Successfully added.');
+              window.location.href = res.redirectlink;
           }
       },
       error: function(res){
@@ -260,11 +261,7 @@ function GetChildren(){
         data.push({'name' : name,'dob' : dob,'age' : age});
         count++;
     });
-
-
     return JSON.stringify(data);
-
-    
 }
 
 function GetEducational(){
@@ -299,8 +296,6 @@ function GetEducational(){
                 });
         count++;
     });
-
-
     return JSON.stringify(data);
 }
 
@@ -494,4 +489,216 @@ function GetStatusType(){
         }
     });
     return JSON.stringify(data);
+}
+
+/*start button for children*/
+$('.button-edit-children').on('click', function(){
+    $('.button-edit-children').hide();
+    $('.button-save-children').show();
+
+    $('.table-children-display').hide();
+    $('.table-children-edit').show();
+});
+
+$('.button-save-children').on('click', function(){
+    $('.button-save-children').hide();
+    $('.button-edit-children').show();
+    var editId = $('input[name="id"]').val();
+
+    saveJson('children',GetChildren(), editId, 'Children');
+    
+
+    $('.table-children-edit').hide();
+    $('.table-children-display').show();
+});
+/*end button for children*/
+
+/*start button for educational*/
+$('.button-edit-educational').on('click', function(){
+    $('.button-edit-educational').hide();
+    $('#addEducational').show();
+    $('.button-save-educational').show();
+
+    $('.table-educational-display').hide();
+    $('.table-educational-edit').show();
+});
+
+$('.button-save-educational').on('click', function(){
+    $('.button-save-educational').hide();
+    $('#addEducational').hide();
+    $('.button-edit-educational').show();
+    var editId = $('input[name="id"]').val();
+
+    saveJson('educational',GetEducational(), editId, 'Educational');
+    
+
+    $('.table-educational-edit').hide();
+    $('.table-educational-display').show();
+});
+/*end button for educational*/
+
+/*start button for CSE*/
+$('.button-edit-cse').on('click', function(){
+    $('.button-edit-cse').hide();
+    $('#addCSE').show();
+    $('.button-save-cse').show();
+
+    $('.table-cse-display').hide();
+    $('.table-cse-edit').show();
+});
+
+$('.button-save-cse').on('click', function(){
+    $('.button-save-cse').hide();
+    $('#addCSE').hide();
+    $('.button-edit-cse').show();
+    var editId = $('input[name="id"]').val();
+
+    saveJson('cse',GetCSE(), editId, 'Civil Service Eligibility');
+    
+
+    $('.table-cse-edit').hide();
+    $('.table-cse-display').show();
+});
+/*end button for CSE*/
+
+/*start button for WE*/
+$('.button-edit-we').on('click', function(){
+    $('.button-edit-we').hide();
+    $('#addWE').show();
+    $('.button-save-we').show();
+
+    $('.table-we-display').hide();
+    $('.table-we-edit').show();
+});
+
+$('.button-save-we').on('click', function(){
+    $('.button-save-we').hide();
+    $('#addWE').hide();
+    $('.button-edit-we').show();
+    var editId = $('input[name="id"]').val();
+
+    saveJson('we',GetWE(), editId, 'Work Experience');
+    
+
+    $('.table-we-edit').hide();
+    $('.table-we-display').show();
+});
+/*end button for WE*/
+
+/*start button for VW*/
+$('.button-edit-vw').on('click', function(){
+    $('.button-edit-vw').hide();
+    $('#addVW').show();
+    $('.button-save-vw').show();
+
+    $('.table-vw-display').hide();
+    $('.table-vw-edit').show();
+});
+
+$('.button-save-vw').on('click', function(){
+    $('.button-save-vw').hide();
+    $('#addVW').hide();
+    $('.button-edit-vw').show();
+    var editId = $('input[name="id"]').val();
+
+    saveJson('VW',GetVW(), editId, 'Voluntary Work');
+    
+
+    $('.table-vw-edit').hide();
+    $('.table-vw-display').show();
+});
+/*end button for VW*/
+
+/*start button for TP*/
+$('.button-edit-tp').on('click', function(){
+    $('.button-edit-tp').hide();
+    $('#addTP').show();
+    $('.button-save-tp').show();
+
+    $('.table-tp-display').hide();
+    $('.table-tp-edit').show();
+});
+
+$('.button-save-tp').on('click', function(){
+    $('.button-save-tp').hide();
+    $('#addTP').hide();
+    $('.button-edit-tp').show();
+    var editId = $('input[name="id"]').val();
+
+    saveJson('tp',GetTP(), editId, 'Training Programs');
+    
+
+    $('.table-tp-edit').hide();
+    $('.table-vw-display').show();
+});
+/*end button for TP*/
+
+/*start button for OI*/
+$('.button-edit-oi').on('click', function(){
+    $('.button-edit-oi').hide();
+    $('#addOI').show();
+    $('.button-save-oi').show();
+
+    $('.table-oi-display').hide();
+    $('.table-oi-edit').show();
+});
+
+$('.button-save-oi').on('click', function(){
+    $('.button-save-oi').hide();
+    $('#addOI').hide();
+    $('.button-edit-oi').show();
+    var editId = $('input[name="id"]').val();
+
+    saveJson('oi',GetOI(), editId, 'Other Information');
+    
+
+    $('.table-oi-edit').hide();
+    $('.table-oi-display').show();
+});
+/*end button for OI*/
+
+/*start button for reference*/
+$('.button-edit-reference').on('click', function(){
+    $('.button-edit-reference').hide();
+    $('#addReferences').show();
+    $('.button-save-reference').show();
+
+    $('.table-reference-display').hide();
+    $('.table-reference-edit').show();
+});
+
+$('.button-save-reference').on('click', function(){
+    $('.button-save-reference').hide();
+    $('#addReferences').hide();
+    $('.button-edit-reference').show();
+    var editId = $('input[name="id"]').val();
+
+    saveJson('reference',GetReference(), editId, 'References');
+    
+
+    $('.table-reference-edit').hide();
+    $('.table-reference-display').show();
+});
+/*end button for reference*/
+
+
+function saveJson(columnName, jsonData, editId, label){
+
+    if (editId !== '0') {
+        $.ajax({
+          url: '/profile/save-json',
+          type: "post",
+          dataType: "html",
+          data:{
+            columnName : columnName, jsonData : jsonData, editId : editId
+          },
+          headers: {
+           'X-CSRF-TOKEN': $('input[name="_token"]').val()
+           },
+          success: function(res){
+            toastr.success('Success!', label + ' Updated successfully');
+          }
+        });  
+    }
+    
 }

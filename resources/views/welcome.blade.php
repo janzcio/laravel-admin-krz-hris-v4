@@ -22,6 +22,11 @@
     <link href="{{ asset('inspinia_admin-v2.9.2/css/style.css') }}" rel="stylesheet">
     <!-- Toastr style -->
     <link href="{{ asset('inspinia_admin-v2.9.2/css/plugins/toastr/toastr.min.css') }}" rel="stylesheet">
+    <style type="text/css">
+        div>.pagination{
+            justify-content: center!important;
+        }
+    </style>
 </head>
 <body id="page-top" class="landing-page ">
 <div class="navbar-wrapper">
@@ -125,44 +130,53 @@
                        <!--  <span>add your question by selecting </span>
                         <button title="Create new cluster" class="btn btn-primary btn-sm"><i class="fa fa-plus"></i> <span class="bold">Add question</span></button> button -->
                     </div>
+                    
                 </div>
-                @foreach ($jobhirings as $j)
-                    <div class="faq-item">
-                        <div class="row">
-                            <div class="col-md-7">
-                                <a data-toggle="collapse" href="#{{ $j->id }}" class="faq-question">{{ $j->title }}</a>
-                                <small>Added by <strong>{{ $users[$j->user_id] }}</strong> <i class="fa fa-clock-o"></i> <span class="label-date-created">{{$j->created_at}}</span>
-                                    <?php if (Auth::user() !== null && isset($applicants[Auth::user()->id][$j->id]) ): ?>
-                                        |  <span class="label label-info"> Date Applied: {{ $applicants[Auth::user()->id][$j->id]->created_at }}</span>
-                                    <?php endif ?>
-                                    </small>
+                @if(count($jobhirings) != 0)
+                    @foreach ($jobhirings as $j)
+                        <div class="faq-item">
+                            <div class="row">
+                                <div class="col-md-7">
+                                    <a data-toggle="collapse" href="#{{ $j->id }}" class="faq-question">{{ $j->title }}</a>
+                                    <small>Added by <strong>{{ $users[$j->user_id] }}</strong> <i class="fa fa-clock-o"></i> <span class="label-date-created">{{$j->created_at}}</span>
+                                        <?php if (Auth::user() !== null && isset($applicants[Auth::user()->id][$j->id]) ): ?>
+                                            |  <span class="label label-info"> Date Applied: {{ $applicants[Auth::user()->id][$j->id]->created_at }}</span>
+                                        <?php endif ?>
+                                        </small>
+                                </div>
+                                <div class="col-md-3">
+                                   <!--  <span class="small font-bold">Alex Berg</span>
+                                    <div class="tag-list">
+                                        <span class="tag-item">General</span>
+                                        <span class="tag-item">Web App</span>
+                                        <span class="tag-item">Instruction</span>
+                                    </div> -->
+                                </div>
+                                <div class="col-md-2 text-right">
+                                    <span class="small font-bold"></span><br/>
+                                    <a href=" /js/view?jhid={{ $j->id }}" class="ladda-button btn btn-warning" data-style="zoom-in" title="Read more" disabled> Read more</a>
+                                </div>
                             </div>
-                            <div class="col-md-3">
-                               <!--  <span class="small font-bold">Alex Berg</span>
-                                <div class="tag-list">
-                                    <span class="tag-item">General</span>
-                                    <span class="tag-item">Web App</span>
-                                    <span class="tag-item">Instruction</span>
-                                </div> -->
-                            </div>
-                            <div class="col-md-2 text-right">
-                                <span class="small font-bold"></span><br/>
-                                <a href=" /js/view?jhid={{ $j->id }}" class="ladda-button btn btn-warning" data-style="zoom-in" title="Read more" disabled> Read more</a>
-                            </div>
-                        </div>
-                        <div class="row">
-                            <div class="col-lg-12">
-                                <div id="{{ $j->id }}" class="panel-collapse collapse">
-                                    <div class="faq-answer">
-                                        <p>
-                                            {{ $j->description }}
-                                        </p>
+                            <div class="row">
+                                <div class="col-lg-12">
+                                    <div id="{{ $j->id }}" class="panel-collapse collapse">
+                                        <div class="faq-answer">
+                                            <p>
+                                                {{ $j->description }}
+                                            </p>
+                                        </div>
                                     </div>
                                 </div>
                             </div>
                         </div>
-                    </div>
-                @endforeach
+                    @endforeach 
+                    <div class="div-pagination">
+                        <?php echo $jobhirings->render(); ?>
+                    </div>  
+                @else
+                    <div class="text-center p-lg"><h3>No job hiring availabe.</h3></div>
+                @endif
+                    
                 
             </div>
         </div>

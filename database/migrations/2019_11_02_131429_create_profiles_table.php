@@ -32,7 +32,7 @@ class CreateProfilesTable extends Migration
             $table->string('status')->nullable();
             $table->date('salary_schedule')->nullable();
             $table->string('sg')->nullable();
-            $table->integer('monthly_salary')->nullable();
+            $table->string('monthly_salary')->nullable();
             $table->string('step')->nullable();
             $table->date('date_of_birth')->nullable();
             $table->text('place_of_birth')->nullable();

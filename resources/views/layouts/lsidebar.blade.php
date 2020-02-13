@@ -12,7 +12,7 @@
         <a href="/messages"><i class="fa fa-book"></i> <span class="nav-label">Messages</span></a>
     </li>
 
-@elseif(Auth::user() !== null && Auth::user()->roles->pluck('name')[0] === 'User')
+@elseif(Auth::user() !== null && Auth::user()->roles->pluck('name')[0] === 'user')
     <li class="">
         <a href="/"><i class="fa fa-home"></i> <span class="nav-label">Home</span></a>
     </li>
@@ -37,9 +37,9 @@
     <li class="{{ ($currentModule == 'users' || $currentModule == 'roles' || $currentModule == 'permissions' || $currentModule == 'generator' || $currentModule == 'jobseekers') ? 'active' : '' }}">
         <a href="#"><i class="fa fa fa-cogs"></i> <span class="nav-label">Settings</span><span class="fa arrow"></span></a>
         <ul class="nav nav-second-level collapse">
-            <li class="{{ $currentModule == 'users' || $currentModule == 'jobseekers' }}">
-                <a href="#" aria-expanded="false">Users <span class="fa arrow"></span></a>
-                <ul class="nav nav-third-level collapse" aria-expanded="false" style="height: 0px;">
+            <li class="{{ ($currentModule == 'users' || $currentModule == 'jobseekers') ? 'active' : '' }}">
+                <a href="#">Users <span class="fa arrow"></span></a>
+                <ul class="nav nav-third-level collapse"">
                     <li class="{{ $currentModule == 'users' ? 'active' : '' }}">
                         <a href="/admin/users">Employee</a>
                     </li>

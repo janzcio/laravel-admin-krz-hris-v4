@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\jobhirings;
 
-use App\Http\Requests;
-use App\Http\Controllers\Controller;
 use App\Applicant;
-use App\jobhiring;
-use App\Profile;
+use App\Http\Controllers\Controller;
+use App\Http\Requests;
 use App\Message;
+use App\Profile;
+use App\User;
+use App\jobhiring;
 use Illuminate\Http\Request;
 
 class jobhiringsController extends Controller

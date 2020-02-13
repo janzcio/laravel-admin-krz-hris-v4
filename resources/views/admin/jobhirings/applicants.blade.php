@@ -89,10 +89,18 @@
                                                                 <?php else: ?>
                                                                     <a href="/admin/message/create?uid={{$item->user_id}}&&jhid={{$item->jobhiring_id}}" class="btn btn-warning btn-xs"><i class="fa fa-paper-plane"></i> Send a message</a>
                                                                 <?php endif ?>
-                                                                <a href="#" title="Request for profile update">
-                                                                    <button class="btn btn-warning btn-xs"><i class="fa fa-pencil" aria-hidden="true"></i> Request for profile update
-                                                                    </button>
-                                                                </a>
+                                                                @can('can-request-for-update')
+                                                                    <?php if ($p[$item->user_id]->rfu != 1): ?>
+                                                                            <?php $userrole = \app\User::find(3)->roles->pluck('name')[0] === 'jobseeker' ? 'jobseekers' : 'users'; ?>
+                                                                            <a href="{{ url('/admin/rfu/'.$userrole.'/' . $item->user_id) }}?applicant=true&&jhid={{$jhid}}" title="Request for profile update">
+                                                                                <button class="btn btn-warning btn-xs"><i class="fa fa-paper-plane" aria-hidden="true"></i> Request for profile update 
+                                                                                </button>
+                                                                            </a>
+                                                                    <?php else: ?>
+                                                                        <button disabled class="btn btn-warning btn-xs"><i class="fa fa-paper-plane" aria-hidden="true"></i> Request for profile update sent
+                                                                            </button>
+                                                                    <?php endif ?>
+                                                                @endcan
                                                             </td>
                                                         </tr>
                                                     @endif

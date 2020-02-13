@@ -44,7 +44,7 @@ class HomeController extends Controller
     {
         // var_dump(\Auth::user()->roles->pluck('name'));
         // die();
-        $jobhirings = jobhiring::all();
+        $jobhirings = jobhiring::paginate(3);
         $users = user::getUserByID();
         $applicants = Applicant::getAllapplicantByids();
         
@@ -161,6 +161,7 @@ class HomeController extends Controller
     public function notifications(){
         $jobhirings = jobhiring::getAllJH();
         $users = user::getUserByID();
+        $latest_applicants = [];
 
          /*all*/
          $new_applicants = Applicant::where('is_read', 0)->get()->count();

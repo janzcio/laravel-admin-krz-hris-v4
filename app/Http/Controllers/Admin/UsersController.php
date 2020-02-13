@@ -3,13 +3,13 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Profile;
 use App\Role;
 use App\User;
-use App\Profile;
-
+use Carbon\Carbon;
 use DB;
-
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
 
 class UsersController extends Controller
 {
@@ -79,14 +79,15 @@ class UsersController extends Controller
         $usertype = $request['usertype'];
         if ($uid != 0) {
             $read_notification = Profile::where('user_id', $uid)
-                          ->update(['rfu' => true]);
-            $message = "jobhiring updated!";
+                          ->update(['rfu' => true, 'updated_at' => Carbon::now()]);
+            $message = "Request for update sent!";
         }else{
             $message = "No User was selected";
         }
-        
 
-        
+        if (isset($_GET['applicant']) && isset($_GET['jhid'])) {
+            return redirect('/admin/jobhirings/'.$_GET['jhid'].'/applicants')->with('message', $message);
+        }
 
         return redirect('/admin/'.$usertype)->with('message', $message);
     }
@@ -123,7 +124,7 @@ class UsersController extends Controller
         $user = User::create($data);
 
         // foreach ($requestData->roles as $role) {
-        //     $user->assignRole($role);
+            // $user->assignRole($role);
         // }
 
         if ($user) {
@@ -137,6 +138,8 @@ class UsersController extends Controller
             $profilesave = profile::create($profiledata);
            if ($profilesave) {
                 $success = true;
+                $user->assignRole('user');
+                $redirectlink = '/profile?uid='.(int)$user->id;
            //      if (isset($_FILES['file']) && $_FILES['file']['error'] == 0){
            //          /*save upload*/
            //          $info = pathinfo($_FILES['file']['name']);
@@ -155,7 +158,7 @@ class UsersController extends Controller
         }
 
         
-        return compact('success');
+        return compact('success','redirectlink');
         // return redirect('admin/users')->with('flash_message', 'User added!');
     }
 
@@ -247,6 +250,8 @@ class UsersController extends Controller
 
     public function profile(){
         $isUpdate = (isset($_GET['edit']) && $_GET['edit'] == 1) ? 1 : 0;
+        $rfu = isset($_GET['rfu']) ? 1 : 0;
+
         $isNew = isset($_GET['new']) ? 1 : 0;
 
         $user_id = null;
@@ -256,7 +261,71 @@ class UsersController extends Controller
         }else{
            $user_id =  \Auth::user()->id;
         }
+        
+        // read notification
+        if ($rfu > 0) {
+            $update = DB::table('profiles')
+                ->where('id', $user_id)
+                ->update(['rfu' => 0]);
+        }
+
         $data = Profile::where('user_id', $user_id)->first();
-        return view('admin.profile.index', compact('data','role','isUpdate'));
+        $user = User::find($user_id);
+        return view('admin.profile.index', compact('data','role','isUpdate','user'));
+    }
+
+    public function profileUpdate(Request $request){
+        $request = $request->all();
+        $success = 'false';
+
+        $update = DB::table('profiles')
+                ->where('id', $request["id"])
+                ->update([$request["element"] => $request["element_value"]]);
+
+        if ($update) {
+            $success = 'true';
+        }
+
+        return $success;
+    }
+
+    public function saveJson(Request $request){
+        $update = DB::table('profiles')
+                ->where('id', $request["editId"])
+                ->update([$request["columnName"] => $request["jsonData"]]);
+    }
+
+    public function updateCredential(Request $request){
+        $request = $request->all();
+        $data = [];
+
+        $user = User::where('id', $request["id"])->first();
+
+        if (Hash::check($request["currentpassword"], $user->password)) {
+            $update = DB::table('users')
+                ->where('id', $request["id"])
+                ->update([
+                    'password' => bcrypt($request["newpassword"]),
+                    'email' => $request["email"],
+                ]);
+                if ($update) {
+                    $data = [
+                        'status' => 'success',
+                        'message' => 'Authentication updated successfully!'
+                    ];
+                }else{
+                    $data = [
+                        'status' => 'error',
+                        'message' => 'Something went wrong during updating!'
+                    ];
+                }
+        }else{
+            $data = [
+                        'status' => 'error',
+                        'message' => 'Wrong Authentication'
+                    ];
+        }
+
+        return $data;
     }
 }
