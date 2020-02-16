@@ -31,6 +31,7 @@ Auth::routes();
 Route::get('/profile', 'Admin\UsersController@profile')->name('profile');
 Route::post('/profile/update', 'Admin\UsersController@profileUpdate')->name('profile_update');
 Route::post('/profile/save-json', 'Admin\UsersController@saveJson')->name('profile_save_json');
+Route::post('/profile/upload-prof-pic', 'Admin\UsersController@upload')->name('profile_upload_profpic');
 Route::post('/profile/update-credential', 'Admin\UsersController@updateCredential')->name('profile_update_credential');
 
 

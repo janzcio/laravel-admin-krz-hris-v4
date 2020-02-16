@@ -328,4 +328,38 @@ class UsersController extends Controller
 
         return $data;
     }
+
+    public function upload(Request $request){
+        $reqdata = $request->all();
+
+        $success = false;
+        $update_profic = null;
+
+        $filename = $_FILES["file"]["name"];
+        
+        $file_ext = pathinfo($filename,PATHINFO_EXTENSION);
+        $newName= $reqdata["dataid"].".".$file_ext;
+        $sourcePath = $_FILES['file']['tmp_name'];
+        
+        $targetPathDir = public_path('uploads\profpic');
+        $targetPath = public_path('uploads\profpic\\') . $newName;
+        if (!file_exists($targetPathDir)) {
+            mkdir($targetPathDir, 0777, true);
+        }
+
+        if(file_exists($targetPath)) {
+            chmod($targetPath,0755); //Change the file permissions if allowed
+            unlink($targetPath); //remove the file
+        }
+
+        if (move_uploaded_file($sourcePath,$targetPath)) {
+            $update_profic = Profile::where('id', $reqdata["dataid"])
+                          ->update([
+                                'image_url' => $newName,
+                                'image_name' => $filename
+                            ]);
+        }
+
+        return compact('reqdata');
+    }
 }

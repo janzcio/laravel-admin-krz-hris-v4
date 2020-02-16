@@ -13,6 +13,10 @@
         .table-children-display, .table-children-edit{
             width: 100% !important;
         }
+
+        .width-100{
+            width: 100%;
+        }
     </style>
     <!-- Toastr style -->
     <link href="{{ asset('inspinia_admin-v2.9.2/css/plugins/toastr/toastr.min.css') }}" rel="stylesheet">
@@ -40,11 +44,21 @@
     <div class="col-md-4">
         <div class="ibox ">
             <div class="ibox-title">
-                <h5>Profile Detail</h5>
+                <h5>Profile Detail </h5>
             </div>
             <div>
+                <?php if ($data->image_name != NULL || $data->image_name != ""): ?>
+                    <?php $imgcurrent = asset('uploads/profpic/') . "/" . $data->image_url; ?>
+                <?php else: ?>
+                    <?php $imgcurrent = asset('uploads/profpic/') . "/" . "default-photo.png"; ?>
+                <?php endif ?>
                 <div class="ibox-content no-padding border-left-right">
-                    <img alt="image" class="img-fluid" src="{{ asset('inspinia_admin-v2.9.2/img/profile_big.jpg') }}">
+                    <img alt="image" class="img-fluid profile-pic" onclick="toggleDivUploadbtn(this)" src="<?= $imgcurrent; ?>" data-id="{{ isset($data) && $data->id != '' ? $data->id : 0}}" accept="image/png, image/jpeg">
+                </div>
+                <div class="div-upload-btn width-100" data-id="{{ isset($data) && $data->id != '' ? $data->id : 0}}" style="display: none;">
+                    <label class="btn btn-outline btn-success btn-sm btn-lg btn-upload width-100 text-left">
+                        Upload <input type="file" class="hidden import-file-select" data-id="{{ isset($data) && $data->id != '' ? $data->id : 0}}">
+                    </label>
                 </div>
                 <div class="ibox-content profile-content">
                     <h4><strong>{{ isset($data) ? $data->firstname : ''}} {{ isset($data) ? $data->surname : '' }}</strong></h4>
@@ -194,7 +208,57 @@
             }
         });
 
+        function toggleDivUploadbtn(evnt){
+            $('.div-upload-btn').toggle();
+            var dataid = $('.div-upload-btn').attr('data-id');
+            console.log(dataid, "dataid");
+        }
 
+        $('.import-file-select').change(function(val){
+            var file_data_all = $(this).prop('files');
+            var file_data = $(this).prop('files')[0];
+            var dataid = $(this).attr('data-id');
+            var vm = this;
+            
+            if ( file_data !== "undefined" ) {
+                var form_data = new FormData();        
+
+                form_data.append('dataid', dataid);
+                form_data.append('file', file_data);     
+
+                $.ajax({
+                    url: '{!! route("profile_upload_profpic") !!}', 
+                    type: 'post',
+                    cache: false,
+                    contentType: false,
+                    processData: false,
+                    data: form_data,    
+                    enctype: 'multipart/form-data',
+                    headers: {
+                        'X-CSRF-TOKEN': $('input[name="_token"]').val()
+                    },
+                    success: function(response){
+                        if (response) {
+                            $('.div-upload-btn').toggle();
+                            readURL(vm, dataid);
+                        }
+                    }
+                 });
+            }
+        });
+
+        function readURL(input, imgid) {
+            if (input.files && input.files[0]) {
+                var reader = new FileReader();
+
+                reader.onload = function (e) {
+                    $('img[data-id="'+imgid+'"]')
+                        .attr('src', e.target.result);
+                };
+                reader.readAsDataURL(input.files[0]);
+                toastr.success('Success!','Profile uploaded successfully');
+            }
+        }
     </script>
     <script src="{{ asset('inspinia_admin-v2.9.2/js/custom/user.js') }}"></script>
 @endsection

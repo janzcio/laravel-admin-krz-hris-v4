@@ -102,6 +102,9 @@ class CreateProfilesTable extends Migration
             $table->text('reference')->nullable();
 
             $table->boolean('rfu')->nullable()->default(0)->comment = 'request for update';
+
+            $table->text('image_url')->nullable();
+            $table->text('image_name')->nullable();
             $table->timestamps();
             $table->softDeletes();
         });
