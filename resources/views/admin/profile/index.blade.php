@@ -53,7 +53,7 @@
                     <?php $imgcurrent = asset('uploads/profpic/') . "/" . "default-photo.png"; ?>
                 <?php endif ?>
                 <div class="ibox-content no-padding border-left-right">
-                    <img alt="image" class="img-fluid profile-pic" onclick="toggleDivUploadbtn(this)" src="<?= $imgcurrent; ?>" data-id="{{ isset($data) && $data->id != '' ? $data->id : 0}}" accept="image/png, image/jpeg">
+                    <img alt="image" class="img-fluid profile-pic" onclick="toggleDivUploadbtn(this)" src="<?= $imgcurrent; ?>" data-id="{{ isset($data) && $data->id != '' ? $data->id : 0}}" onError='onError(this, "<?= $imgcurrent ?>")' accept="image/png, image/jpeg">
                 </div>
                 <div class="div-upload-btn width-100" data-id="{{ isset($data) && $data->id != '' ? $data->id : 0}}" style="display: none;">
                     <label class="btn btn-outline btn-success btn-sm btn-lg btn-upload width-100 text-left">
@@ -258,6 +258,14 @@
                 reader.readAsDataURL(input.files[0]);
                 toastr.success('Success!','Profile uploaded successfully');
             }
+        }
+
+        function onError(e, url){
+            var defaultpic = '<?= asset('uploads/profpic') . "/" . "default-photo.png"; ?>'
+            console.log(defaultpic, "defaultpicdefaultpicdefaultpic");
+            setTimeout(function(){
+                $(e).attr('src', defaultpic);
+            });
         }
     </script>
     <script src="{{ asset('inspinia_admin-v2.9.2/js/custom/user.js') }}"></script>

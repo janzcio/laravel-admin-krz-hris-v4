@@ -343,6 +343,9 @@ class UsersController extends Controller
         
         $targetPathDir = public_path('uploads\profpic');
         $targetPath = public_path('uploads\profpic\\') . $newName;
+
+        ini_set('memory_limit', '-1');
+
         if (!file_exists($targetPathDir)) {
             mkdir($targetPathDir, 0777, true);
         }
@@ -361,5 +364,10 @@ class UsersController extends Controller
         }
 
         return compact('reqdata');
+    }
+
+    public function loadTable($tablename, $id){
+        $data = Profile::where('id', $id)->first();
+        return view('admin.profile.ajax.' . $tablename, compact('data'));
     }
 }

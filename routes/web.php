@@ -33,6 +33,7 @@ Route::post('/profile/update', 'Admin\UsersController@profileUpdate')->name('pro
 Route::post('/profile/save-json', 'Admin\UsersController@saveJson')->name('profile_save_json');
 Route::post('/profile/upload-prof-pic', 'Admin\UsersController@upload')->name('profile_upload_profpic');
 Route::post('/profile/update-credential', 'Admin\UsersController@updateCredential')->name('profile_update_credential');
+Route::get('/profile/load-table/{tablename}/{id}', 'Admin\UsersController@loadTable')->name('profile_load_table');
 
 
 Route::get('admin', 'Admin\AdminController@index');

@@ -601,7 +601,7 @@ $('.button-save-vw').on('click', function(){
     $('.button-edit-vw').show();
     var editId = $('input[name="id"]').val();
 
-    saveJson('VW',GetVW(), editId, 'Voluntary Work');
+    saveJson('vw',GetVW(), editId, 'Voluntary Work');
     
 
     $('.table-vw-edit').hide();
@@ -629,7 +629,7 @@ $('.button-save-tp').on('click', function(){
     
 
     $('.table-tp-edit').hide();
-    $('.table-vw-display').show();
+    $('.table-tp-display').show();
 });
 /*end button for TP*/
 
@@ -697,8 +697,25 @@ function saveJson(columnName, jsonData, editId, label){
            },
           success: function(res){
             toastr.success('Success!', label + ' Updated successfully');
+            laodAjax(columnName, editId);
           }
         });  
     }
+}
+
+function laodAjax(tablename, editId){
     
+    $('.table-'+ tablename +'-display').html('<div class=" text-center"><i class="fa fa-spinner fa-spin"></i></div>');
+    $.ajax({
+      url: '/profile/load-table/' + tablename + '/' + editId,
+      type: "get",
+      dataType: "html",
+      headers: {
+       'X-CSRF-TOKEN': $('input[name="_token"]').val()
+       },
+      success: function(res){
+        console.log(tablename, "tablename");
+        $('.table-'+ tablename +'-display').html(res);
+      }
+    });  
 }
