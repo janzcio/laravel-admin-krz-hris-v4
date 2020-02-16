@@ -101,13 +101,11 @@
                         <!-- isset($applicants[Auth::user()->id][$j->id]) -->
                         <?php if (Auth::user() !== null && isset($applicants[Auth::user()->id][$jhid])): ?>
                             <button class="ladda-button btn btn-warning" disabled="">Applied</button>
-                            <p><small><i>2019-12-28 10:16:12</i></small></p>
-                            
+                            <p><small><i>{{$applicants[Auth::user()->id][$jhid]->created_at}}</i></small></p>
                         <?php else: ?>
-                            
+                            <?php if ($canApply): ?>
                                 <a href="/apply/{{ $jhid }}" class="ladda-button btn btn-warning" data-style="zoom-in" title="Apply here" disabled><i class="fa fa-send-o"></i> Apply Now!</a>
-                            
-                            
+                            <?php endif ?>
                         <?php endif ?>
                     	 
 

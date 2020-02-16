@@ -81,6 +81,8 @@ class HomeController extends Controller
 
     public function jsView()
     {
+        $canApply = (Auth::user() != null && Auth::user()->roles->pluck('name')[0] == "admin" ? false : true);
+        
         $jhid = isset($_GET["jhid"]) ? $_GET["jhid"] : 0;
         $applicants = Applicant::getAllapplicantByids();
         $jobhiring = jobhiring::findOrFail($jhid);
@@ -90,7 +92,7 @@ class HomeController extends Controller
         $jobhiring->others = explode("*", $jobhiring->others);
         $jobhiring->how_to_apply = explode("*", $jobhiring->how_to_apply);
         $jobhiring->location = explode("*", $jobhiring->location);
-        return view('pages.view-jobhiring', compact('jhid','applicants','jobhiring'));
+        return view('pages.view-jobhiring', compact('jhid','applicants','jobhiring','canApply'));
     }
 
     public function jsStore(Request $request)

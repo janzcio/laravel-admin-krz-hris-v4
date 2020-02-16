@@ -3,13 +3,14 @@
 namespace App\Http\Controllers\Admin;
 
 use App\Http\Controllers\Controller;
+use App\Permission;
+use App\Role;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
 
 class TruncateTablesController extends Controller
 {
     public function trunctateAll(){
-    	
     	DB::statement('SET FOREIGN_KEY_CHECKS = 0; ');
 		DB::table('role_user')->truncate();
 		DB::table('users')->truncate();

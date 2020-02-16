@@ -1,9 +1,10 @@
 <?php
 
-use Illuminate\Database\Seeder;
-use App\User;
-use App\Role;
 use App\Permission;
+use App\Role;
+use App\User;
+use Carbon\Carbon;
+use Illuminate\Database\Seeder;
 
 class AdminSeeder extends Seeder
 {
@@ -67,6 +68,9 @@ class AdminSeeder extends Seeder
         $user->assignRole('user');
         $jobseeker->assignRole('jobseeker');
 
+        
+
+        
 
     }
 }
