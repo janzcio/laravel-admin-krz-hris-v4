@@ -5,7 +5,7 @@ use App\Role;
 use Carbon\Carbon;
 use Illuminate\Database\Seeder;
 
-class RolesAndPermission extends Seeder
+class RolesPermissionsTableSeeder extends Seeder
 {
     /**
      * Run the database seeds.
